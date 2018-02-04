@@ -14,11 +14,11 @@ class NNConfig(Config):
         # 模型名称。暂时不用。
         self.nn_name = name  # nn名称,str
         # 训练及模型保存相关参数
-        self.save_per_batch = 10
-        self.print_per_batch = 10
+        self.save_per_batch = 50
+        self.print_per_batch = 50
         self.batch_size = 50
         self.learning_rate = 0.001
-        self.epoch_num = 2
+        self.epoch_num = 2000
         self.dropout_keep_prob = 0.9
         # embedding相关参数
         self.embedding_dim = 500  # 词向量维度
