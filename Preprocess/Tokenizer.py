@@ -11,6 +11,3 @@ class Tokenizer:
 
     def parser(self,text):
         return self.tokenizer.cut(text,text=True)#返回文本
-
-tokenizer=Tokenizer()
-print(tokenizer.parser("设置用户词典，用户词典中的词会被打上uw标签。词典中每一个词一行，UTF8编码"))

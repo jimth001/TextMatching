@@ -3,16 +3,16 @@ from sklearn.metrics.ranking import roc_auc_score
 from sklearn.metrics.regression import r2_score
 
 class Model:
-    def __init__(self,config):
-        self.is_debug=True
+    def __init__(self,config,is_debug=True):
+        self.is_debug=is_debug
         self.config=config
 
-    def train(self,x_train,y_train):
+    def train(self,train_path):
         if self.is_debug:
-            print("train:------------------------")
+            print("train:-------------------------------------------------")
         pass
 
-
+    #todo 这个函数以后应该删除
     def test(self,x_test,y_test=None):
         if not y_test is None:
             if len(x_test)!=len(y_test):
@@ -32,26 +32,16 @@ class Model:
 
     def inference_one(self,x_test):
         if self.is_debug:
-            print("inference:")
+            print("inference_one:---------------------------------------------")
         return None
 
-    def cross_val(self,data_path):
+    def inference_all(self,x_test):
         if self.is_debug:
-            print("inference:"+data_path)
+            print("inference_all:---------------------------------------------")
         pass
 
-    def train_with_config(self):
-        if self.is_debug:
-            print("train_with_config")
+    def save(self,path):
         pass
 
-    def inference_with_config(self):
-        if self.is_debug:
-            print("inference_with_config")
-        pass
-
-    def save(self):
-        pass
-
-    def load(self):
+    def load(self,path):
         pass

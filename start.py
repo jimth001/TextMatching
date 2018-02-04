@@ -1,7 +1,11 @@
 from BaseTensorFlow import RNNBasedModel
-import os
-config=RNNBasedModel.RNNConfig()
-config.Load(os.getcwd()+"\config")
+from Preprocess.Preprocessor import Preprocessor
+config=RNNBasedModel.RNNConfig("my_rnn")
 rnn=RNNBasedModel.RNNModel(config)
-rnn.train("E:\\Learning\\研一\\文本匹配\\NLPCC2017-OpenDomainQA\\training&testing\\nlpcc-iccpol-2016.dbqa.training-data")
-rnn.inference_with_config()
+rnn.train("training&testing\\mini-test.training-data",save_and_quit=True,weight_balanced=True)
+print("training finished")
+x_test,y_test=Preprocessor.load_data("training&testing\\mini-test.training-data")
+rnn.load()
+x_test,y=Preprocessor.seg_and_2_int(x_test,rnn.word_dict)
+rst=rnn.inference_all(x_test)
+print("all work finished")

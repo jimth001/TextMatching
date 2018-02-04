@@ -13,15 +13,33 @@ class Preprocessor:
         has_y = True
         file = open(data_path, 'r', encoding='utf-8')
         for line in file:
-            strs = line.split('\t')
+            strs = line.strip('\n').split('\t')
             x_data.append(strs[0] + strs[1])  ##文本匹配有两个文本。暂时拼到一起。后面应该改成过两个RNN的
             if has_y:
                 try:
-                    y_data.append(int(strs[2]))
+                    y_data.append(strs[2])  # 注意target是str
                 except IndexError:
                     y_data = None
                     has_y = False
         return x_data, y_data
+
+    @staticmethod
+    def target_2_one_hot(y_data):  # 适用于multi-class classification。允许target是各种形式，比如“类别1，类别2”
+        target_dict = WordDictionary()
+        y_index = []
+        for tar in y_data:
+            index = target_dict.get_index(tar)
+            if index is None:
+                target_dict.add_word(tar)
+                index = target_dict.get_index(tar)
+            y_index.append(index)
+        size = target_dict.get_size()
+        y_new = []
+        for index in y_index:
+            tmp = [0] * size
+            tmp[index] = 1
+            y_new.append(tmp)
+        return y_new, target_dict
 
     @staticmethod
     def seg_and_2_int(x_data, word_dict=None):
@@ -46,7 +64,7 @@ class Preprocessor:
                 sen_vec = []
                 seg_rst = tokenizer.parser(sen)
                 for word in seg_rst:
-                    index = dict.get_index(word)
+                    index = word_dict.get_index(word)
                     if not index is None:  # 如果用已有词典，那么出现未登录词的时候丢弃这个词
                         sen_vec.append(index)
                 new_x.append(sen_vec)
@@ -57,6 +75,31 @@ class Preprocessor:
         if len(data) != len(target):
             raise ValueError("x和y长度不一致")
             # todo 过采样得到均衡数据集
+        target_num_counter = {}
+        target_data_dict = {}
+        new_data = [x for x in data]
+        new_target = [x for x in target]
+        for i in range(len(target)):
+            if target[i] in target_num_counter:
+                target_num_counter[target[i]] += 1
+            else:
+                target_num_counter[target[i]] = 1
+            if target[i] in target_data_dict:
+                target_data_dict[target[i]].append(i)
+            else:
+                target_data_dict[target[i]] = [i]
+        max = 0
+        for key in target_num_counter.keys():
+            if target_num_counter[key] > max:
+                max = target_num_counter[key]
+        for key in target_data_dict.keys():
+            list = target_data_dict[key]
+            length = len(list)
+            for i in range(max - length):
+                random_index = np.random.randint(0, length)
+                new_data.append(data[list[random_index]])
+                new_target.append(target[list[random_index]])
+        return new_data, new_target
 
     @staticmethod
     def batch_iter(x, y, batch_size=64, padding=0):  # 生成批次数据。x中数据可以不等长，会padding成一样的
@@ -77,7 +120,7 @@ class Preprocessor:
             max_len = max(rm)
             for list in rx:
                 if len(list) < max_len:
-                    list = list + [padding] * (max_len - len(list))
+                    list += [padding] * (max_len - len(list))
             yield rx, ry, rm
 
     @staticmethod
