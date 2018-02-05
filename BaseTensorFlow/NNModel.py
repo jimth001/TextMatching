@@ -19,7 +19,7 @@ class NNConfig(Config):
         self.print_per_batch = 50
         self.batch_size = 50
         self.learning_rate = 0.001
-        self.epoch_num = 2000
+        self.epoch_num = 2
         self.dropout_keep_prob = 0.9
         # embedding相关参数
         self.embedding_dim = 500  # 词向量维度
