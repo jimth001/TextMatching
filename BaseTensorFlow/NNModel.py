@@ -114,17 +114,8 @@ class NNModel(Model):
     def train(self, train_path, init_nn=True, save_and_quit=False, weight_balanced=False):
         start_time = time.time()
         super(NNModel, self).train(train_path)
-        # 载入训练集,划分验证集：
-        print(str(self.__get_time_dif(start_time))+"loading data......")
-        x_train, y_train = Preprocessor.load_data(train_path)
-        print(str(self.__get_time_dif(start_time))+"balancing data......")
-        if weight_balanced:
-            x_train, y_train = Preprocessor.get_balanced_data(x_train, y_train)
-        print(str(self.__get_time_dif(start_time))+"converting sentence 2 word-index vector......")
-        x_train, self.word_dict = Preprocessor.seg_and_2_int(x_data=x_train)
-        print(str(self.__get_time_dif(start_time))+"converting target 2 one-hot vector......")
-        y_train, self.target_dict = Preprocessor.target_2_one_hot(y_train)
-        print(str(self.__get_time_dif(start_time))+"saving dict......")
+
+
         #self.word_dict.save("model_store/dict/", "word_dict")
         #self.target_dict.save("model_store/dict/", "target_dict")
         print(str(self.__get_time_dif(start_time))+"generating validation set......")

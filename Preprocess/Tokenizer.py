@@ -7,7 +7,7 @@ class Tokenizer:
         self.model_path=None#默认为model_path
         self.T2S=True#繁简体转换
         self.seg_only=True#只进行分词
-        self.filt=False#去停用词
+        self.filt=True#去停用词
         self.tokenizer=thulac.thulac(user_dict=self.user_dict,model_path=self.model_path,T2S=self.T2S,seg_only=self.seg_only,filt=self.filt)
 
     def parser(self,text):

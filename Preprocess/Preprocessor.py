@@ -3,6 +3,7 @@ from .WordDictionary import WordDictionary
 import numpy as np
 from .Tokenizer import Tokenizer
 import codecs
+import csv
 
 class Preprocessor:
     @staticmethod
@@ -78,15 +79,37 @@ class Preprocessor:
         return new_x, word_dict
 
     @staticmethod
-    def save_preprocessed_data(data,target=None):
-        #todo
-        pass
+    def save_preprocessed_data(data,path,name):
+        file = codecs.open(path+name, 'w+', encoding='utf-8')
+        wr=csv.writer(file)
+        for d in data:
+            wr.writerow(d)
+        file.close()
 
     @staticmethod
     def load_preprocessed_data(data_path):
         #todo
         pass
 
+    @staticmethod
+    def preprocess_and_save(data_path,store_path,name="train",weight_balanced=False,word_dict=None,target_dict=None):
+        # 载入训练集,划分验证集：
+        print("loading data......")
+        x_train, y_train = Preprocessor.load_data(data_path)
+        print("converting sentence 2 word-index vector......")
+        x_train, word_dict = Preprocessor.seg_and_2_int(x_data=x_train,word_dict=word_dict)
+        if weight_balanced and len(y_train)>0:
+            print("balancing data......")
+            x_train, y_train = Preprocessor.get_balanced_data(x_train, y_train)
+        if len(y_train)>0:#是有label的样本
+            print("converting target 2 one-hot vector......")
+            y_train, target_dict = Preprocessor.target_2_one_hot(y_train,target_dict=target_dict)
+            target_dict.save(store_path,'target_dict')
+            Preprocessor.save_preprocessed_data(y_train,store_path,'y_'+name)
+        print("saving......")
+        word_dict.save(store_path,'word_dict')
+        Preprocessor.save_preprocessed_data(x_train,store_path,'x_'+name)
+        return word_dict,target_dict
 
     @staticmethod
     def get_balanced_data(data, target):
