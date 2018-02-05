@@ -1,3 +1,4 @@
+# coding:utf-8
 from BaseTensorFlow import RNNBasedModel
 from Preprocess.Preprocessor import Preprocessor
 config=RNNBasedModel.RNNConfig("my_rnn")

@@ -1,3 +1,4 @@
+# coding:utf-8
 from sklearn.metrics.classification import classification_report
 from sklearn.metrics.ranking import roc_auc_score
 from sklearn.metrics.regression import r2_score

@@ -1,3 +1,4 @@
+# coding:utf-8
 from .WordDictionary import WordDictionary
 import numpy as np
 from .Tokenizer import Tokenizer

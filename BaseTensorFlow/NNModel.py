@@ -1,3 +1,4 @@
+# coding:utf-8
 from Model.Model import Model
 from Model.Config import Config
 from Preprocess.Preprocessor import Preprocessor
