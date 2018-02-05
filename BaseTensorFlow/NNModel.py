@@ -159,7 +159,7 @@ class NNModel(Model):
                     feed_dict[self.keep_prob] = 1.0  # 在验证集上验证时dropout的概率改为0
                     loss_train, acc_train = self.session.run([self.loss, self.acc],
                                                              feed_dict=feed_dict)  # 算一下在这个train_batch上的loss和acc
-                    loss_val, acc_val = self.__evaluate_without_predict_result(x_val, y_val)  # 验证，得到loss和acc
+                    loss_val, acc_val = self._evaluate_without_predict_result(x_val, y_val)  # 验证，得到loss和acc
                     if acc_val > best_acc_val:
                         # 保存最好结果
                         best_acc_val = acc_val
