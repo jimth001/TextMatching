@@ -3,7 +3,7 @@ from sklearn.metrics.classification import classification_report
 from sklearn.metrics.ranking import roc_auc_score
 from sklearn.metrics.regression import r2_score
 
-class Model:
+class Model(object):
     def __init__(self,config,is_debug=True):
         self.is_debug=is_debug
         self.config=config
