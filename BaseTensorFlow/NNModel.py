@@ -112,17 +112,22 @@ class NNModel(Model):
         pass
 
     def train(self, train_path, init_nn=True, save_and_quit=False, weight_balanced=False):
+        start_time = time.time()
         super(NNModel, self).train(train_path)
         # 载入训练集,划分验证集：
-        print("loading data......")
+        print(str(self.__get_time_dif(start_time))+"loading data......")
         x_train, y_train = Preprocessor.load_data(train_path)
+        print(str(self.__get_time_dif(start_time))+"balancing data......")
         if weight_balanced:
             x_train, y_train = Preprocessor.get_balanced_data(x_train, y_train)
+        print(str(self.__get_time_dif(start_time))+"converting sentence 2 word-index vector......")
         x_train, self.word_dict = Preprocessor.seg_and_2_int(x_data=x_train)
+        print(str(self.__get_time_dif(start_time))+"converting target 2 one-hot vector......")
         y_train, self.target_dict = Preprocessor.target_2_one_hot(y_train)
+        print(str(self.__get_time_dif(start_time))+"saving dict......")
         self.word_dict.save("model_store/dict", "word_dict")
         self.target_dict.save("model_store/dict", "target_dict")
-        print("generating validation set......")
+        print(str(self.__get_time_dif(start_time))+"generating validation set......")
         data = Preprocessor.generate_train_and_cross_validation(x=x_train, y=y_train, n_fold=4)
         x_train, y_train, x_val, y_val = data.__next__()
         # 初始化网络结构。nn结构有依赖train_data的参数。因为读完train_data才知道词表大小，要根据词表大小确定embedding层的size。
@@ -140,12 +145,10 @@ class NNModel(Model):
         if not os.path.exists(self.config.save_dir):
             os.makedirs(self.config.save_dir)
         ##############################################################
-        print("trainning and evaluating...")
-        start_time = time.time()
+        print(str(self.__get_time_dif(start_time))+"trainning and evaluating...")
         total_batch = 0
         best_acc_val = 0.0
         last_improved = 0
-
         flag = False  # 停止标志
         # 创建session
         self.session = tf.Session()
@@ -176,7 +179,7 @@ class NNModel(Model):
                           + ' Val Loss: {3:>6.2}, Val Acc: {4:>7.2%}, Time: {5} {6}'
                     print(msg.format(total_batch, loss_train, acc_train, loss_val, acc_val, time_dif, improved_str))
                 total_batch += 1
-                if total_batch - last_improved > self.require_improvement:
+                if total_batch - last_improved > self.config.require_improvement:
                     # 早停：验证集正确率长期不提升，提前结束训练
                     print("No optimization for a long time, auto-stopping...")
                     flag = True
