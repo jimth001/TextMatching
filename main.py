@@ -1,8 +1,11 @@
 # coding:utf-8
 from BaseTensorFlow import RNNBasedModel
 from Preprocess.Preprocessor import Preprocessor
+import sys
 
 if __name__ == "main":
+    reload(sys)
+    sys.setdefaultencoding("utf-8")
     config = RNNBasedModel.RNNConfig("my_rnn")
     rnn = RNNBasedModel.RNNModel(config)
     rnn.train("./training_testing/nlpcc-iccpol-2016.dbqa.training-data", save_and_quit=True, weight_balanced=True)
