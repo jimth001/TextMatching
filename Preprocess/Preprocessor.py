@@ -78,6 +78,17 @@ class Preprocessor:
         return new_x, word_dict
 
     @staticmethod
+    def save_preprocessed_data(data,target=None):
+        #todo
+        pass
+
+    @staticmethod
+    def load_preprocessed_data(data_path):
+        #todo
+        pass
+
+
+    @staticmethod
     def get_balanced_data(data, target):
         if len(data) != len(target):
             raise ValueError("x和y长度不一致")
