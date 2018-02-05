@@ -2,7 +2,7 @@
 from .WordDictionary import WordDictionary
 import numpy as np
 from .Tokenizer import Tokenizer
-
+import codecs
 
 class Preprocessor:
     @staticmethod
@@ -12,7 +12,7 @@ class Preprocessor:
         x_data = []
         y_data = []
         has_y = True
-        file = open(data_path, 'r', encoding='utf-8')
+        file = codecs.open(data_path, 'r', encoding='utf-8')
         for line in file:
             strs = line.strip('\n').split('\t')
             x_data.append(strs[0] + strs[1])  ##文本匹配有两个文本。暂时拼到一起。后面应该改成过两个RNN的

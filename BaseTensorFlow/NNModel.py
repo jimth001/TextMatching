@@ -118,8 +118,8 @@ class NNModel(Model):
             x_train, y_train = Preprocessor.get_balanced_data(x_train, y_train)
         x_train, self.word_dict = Preprocessor.seg_and_2_int(x_data=x_train)
         y_train, self.target_dict = Preprocessor.target_2_one_hot(y_train)
-        self.word_dict.save("model_store\\dict", "word_dict")
-        self.target_dict.save("model_store\\dict", "target_dict")
+        self.word_dict.save("model_store/dict", "word_dict")
+        self.target_dict.save("model_store/dict", "target_dict")
         data = Preprocessor.generate_train_and_cross_validation(x=x_train, y=y_train, n_fold=4)
         x_train, y_train, x_val, y_val = data.__next__()
         # 初始化网络结构。nn结构有依赖train_data的参数。因为读完train_data才知道词表大小，要根据词表大小确定embedding层的size。

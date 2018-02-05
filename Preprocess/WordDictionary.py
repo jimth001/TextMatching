@@ -1,7 +1,7 @@
 # coding:utf-8
 import csv
 import os
-
+import codecs
 
 class WordDictionary:
     def __init__(self):
@@ -23,7 +23,7 @@ class WordDictionary:
     def save(self, path, name):
         if not os.path.exists(path):
             os.makedirs(path)
-        file = open(path + name, 'w+', newline='', encoding='utf-8')
+        file = codecs.open(path + name, 'w+', newline='', encoding='utf-8')
         wr = csv.writer(file)
         for key in self.words.keys():
             wr.writerow([key, self.words[key]])
@@ -31,7 +31,7 @@ class WordDictionary:
 
     def load(self, path, name):
         self.words.clear()
-        file = open(path + name, 'r', encoding='utf-8')
+        file = codecs.open(path + name, 'r', encoding='utf-8')
         rd = csv.reader(file)
         for strs in rd:
             self.words[strs[0]] = int(strs[1])
