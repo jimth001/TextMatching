@@ -24,14 +24,20 @@ class Preprocessor:
         return x_data, y_data
 
     @staticmethod
-    def target_2_one_hot(y_data):  # 适用于multi-class classification。允许target是各种形式，比如“类别1，类别2”
-        target_dict = WordDictionary()
+    def target_2_one_hot(y_data,target_dict=None):  # 适用于multi-class classification。允许target是各种形式，比如“类别1，类别2”
+        is_new_dict=False
+        if target_dict==None:
+            target_dict = WordDictionary()
+            is_new_dict=True
         y_index = []
         for tar in y_data:
             index = target_dict.get_index(tar)
             if index is None:
-                target_dict.add_word(tar)
-                index = target_dict.get_index(tar)
+                if is_new_dict:
+                    target_dict.add_word(tar)
+                    index = target_dict.get_index(tar)
+                else:
+                    raise ValueError("未知的类别："+str(tar))
             y_index.append(index)
         size = target_dict.get_size()
         y_new = []

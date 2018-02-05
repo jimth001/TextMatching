@@ -89,7 +89,7 @@ class NNModel(Model):
         time_dif = end_time - start_time
         return timedelta(seconds=int(round(time_dif)))
 
-    def __evaluate_without_predict_result(self, x_, y_):
+    def _evaluate_without_predict_result(self, x_, y_):
         batches = Preprocessor.batch_iter(x_, y_, self.config.batch_size)
         total_loss = 0.0
         total_acc = 0.0
