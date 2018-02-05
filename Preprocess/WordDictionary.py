@@ -23,7 +23,7 @@ class WordDictionary:
     def save(self, path, name):
         if not os.path.exists(path):
             os.makedirs(path)
-        file = codecs.open(path + name, 'w+', newline='', encoding='utf-8')
+        file = codecs.open(path + name, 'w+', encoding='utf-8')
         wr = csv.writer(file)
         for key in self.words.keys():
             wr.writerow([key, self.words[key]])

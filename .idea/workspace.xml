@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a7940f08-1bd9-49b3-8987-e5b447eecd99" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/TextMatching.iml" afterPath="$PROJECT_DIR$/.idea/TextMatching.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Preprocess/WordDictionary.py" afterPath="$PROJECT_DIR$/Preprocess/WordDictionary.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -35,11 +33,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NNModel.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="NNModel.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/BaseTensorFlow/NNModel.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1820">
-              <caret line="52" column="24" lean-forward="false" selection-start-line="52" selection-start-column="24" selection-end-line="52" selection-end-column="24" />
+            <state relative-caret-position="255">
+              <caret line="57" column="27" lean-forward="true" selection-start-line="57" selection-start-column="27" selection-end-line="57" selection-end-column="27" />
               <folding>
                 <element signature="e#15#44#0" expanded="true" />
                 <element signature="e#2145#2552#0" expanded="false" />
@@ -61,11 +59,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Tokenizer.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Tokenizer.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Preprocess/Tokenizer.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="455">
-              <caret line="13" column="32" lean-forward="true" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="32" />
+              <caret line="13" column="54" lean-forward="false" selection-start-line="13" selection-start-column="54" selection-end-line="13" selection-end-column="54" />
               <folding />
             </state>
           </provider>
@@ -74,8 +72,8 @@
       <file leaf-file-name="WordDictionary.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Preprocess/WordDictionary.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="770">
-              <caret line="22" column="8" lean-forward="false" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="8" />
+            <state relative-caret-position="875">
+              <caret line="25" column="45" lean-forward="false" selection-start-line="25" selection-start-column="45" selection-end-line="25" selection-end-column="45" />
               <folding>
                 <element signature="e#15#25#0" expanded="true" />
               </folding>
@@ -145,8 +143,8 @@
       <find>rst</find>
       <find>plt</find>
       <find>save</find>
-      <find>\\</find>
       <find>open</find>
+      <find>\\</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -162,11 +160,11 @@
         <option value="$PROJECT_DIR$/test/TestPreprocessor.py" />
         <option value="$PROJECT_DIR$/start.py" />
         <option value="$PROJECT_DIR$/BaseTensorFlow/NNModel.py" />
-        <option value="$PROJECT_DIR$/Preprocess/WordDictionary.py" />
         <option value="$PROJECT_DIR$/Preprocess/Preprocessor.py" />
         <option value="$PROJECT_DIR$/Model/Config.py" />
         <option value="$PROJECT_DIR$/Model/Model.py" />
         <option value="$PROJECT_DIR$/main.py" />
+        <option value="$PROJECT_DIR$/Preprocess/WordDictionary.py" />
       </list>
     </option>
   </component>
@@ -826,16 +824,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Preprocess/WordDictionary.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="770">
-          <caret line="22" column="8" lean-forward="false" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="8" />
-          <folding>
-            <element signature="e#15#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Model/Model.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
@@ -880,18 +868,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/BaseTensorFlow/NNModel.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1820">
-          <caret line="52" column="24" lean-forward="false" selection-start-line="52" selection-start-column="24" selection-end-line="52" selection-end-column="24" />
-          <folding>
-            <element signature="e#15#44#0" expanded="true" />
-            <element signature="e#2145#2552#0" expanded="false" />
-            <element signature="e#3189#3329#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="490">
@@ -923,8 +899,30 @@
     <entry file="file://$PROJECT_DIR$/Preprocess/Tokenizer.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="455">
-          <caret line="13" column="32" lean-forward="true" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="32" />
+          <caret line="13" column="54" lean-forward="false" selection-start-line="13" selection-start-column="54" selection-end-line="13" selection-end-column="54" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Preprocess/WordDictionary.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="875">
+          <caret line="25" column="45" lean-forward="false" selection-start-line="25" selection-start-column="45" selection-end-line="25" selection-end-column="45" />
+          <folding>
+            <element signature="e#15#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BaseTensorFlow/NNModel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="57" column="27" lean-forward="true" selection-start-line="57" selection-start-column="27" selection-end-line="57" selection-end-column="27" />
+          <folding>
+            <element signature="e#15#44#0" expanded="true" />
+            <element signature="e#2145#2552#0" expanded="false" />
+            <element signature="e#3189#3329#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
