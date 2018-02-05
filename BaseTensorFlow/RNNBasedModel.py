@@ -10,7 +10,7 @@ class RNNConfig(NNConfig):
         super(RNNConfig, self).__init__(name,task_type=None, metric=None)
         if config_path is None:
             self.mlp_hidden_layers_num = 128  # mlp的隐含层神经元个数
-            self.hidden_dim = 2 * self.embedding_dim  # 隐藏层神经元。RNN输出的维数。如果要做多层RNN的话，输入和输出维数必须相同。
+            self.hidden_dim = self.embedding_dim  # 隐藏层神经元。
             self.rnn = 'gru'  # rnn类型
             self.layers_num = 2  # RNN层数
 

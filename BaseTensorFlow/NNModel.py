@@ -15,14 +15,15 @@ class NNConfig(Config):
         # 模型名称。暂时不用。
         self.nn_name = name  # nn名称,str
         # 训练及模型保存相关参数
-        self.save_per_batch = 50
-        self.print_per_batch = 50
-        self.batch_size = 50
-        self.learning_rate = 0.001
+        self.save_per_batch = 1000
+        self.print_per_batch = 1000
+        self.batch_size = 128
+        self.learning_rate = 0.002
         self.epoch_num = 2
         self.dropout_keep_prob = 0.9
+        self.require_improvement = 15 * self.print_per_batch
         # embedding相关参数
-        self.embedding_dim = 500  # 词向量维度
+        self.embedding_dim = 512  # 词向量维度
         # 配置 Tensorboard，重新训练时，请将tensorboard文件夹删除，不然图会覆盖
         self.tensorboard_dir = 'tensorboard/textrnn'
 
@@ -113,6 +114,7 @@ class NNModel(Model):
     def train(self, train_path, init_nn=True, save_and_quit=False, weight_balanced=False):
         super(NNModel, self).train(train_path)
         # 载入训练集,划分验证集：
+        print("loading data......")
         x_train, y_train = Preprocessor.load_data(train_path)
         if weight_balanced:
             x_train, y_train = Preprocessor.get_balanced_data(x_train, y_train)
@@ -120,6 +122,7 @@ class NNModel(Model):
         y_train, self.target_dict = Preprocessor.target_2_one_hot(y_train)
         self.word_dict.save("model_store/dict", "word_dict")
         self.target_dict.save("model_store/dict", "target_dict")
+        print("generating validation set......")
         data = Preprocessor.generate_train_and_cross_validation(x=x_train, y=y_train, n_fold=4)
         x_train, y_train, x_val, y_val = data.__next__()
         # 初始化网络结构。nn结构有依赖train_data的参数。因为读完train_data才知道词表大小，要根据词表大小确定embedding层的size。
@@ -142,7 +145,7 @@ class NNModel(Model):
         total_batch = 0
         best_acc_val = 0.0
         last_improved = 0
-        require_improvement = 1000
+
         flag = False  # 停止标志
         # 创建session
         self.session = tf.Session()
@@ -155,7 +158,7 @@ class NNModel(Model):
                 s = self.session.run([self.optim, merged_summary], feed_dict=feed_dict)
                 if total_batch % self.config.save_per_batch == 0:  # 每多少轮次将训练结果写入tensorboard scalar
                     writer.add_summary(s[1], total_batch)  # 传入summary信息和当前的batch数
-                if total_batch % self.config.print_per_batch == 0:  # 每多少轮次输出在训练集和验证集上的性能
+                if total_batch > 0 and total_batch % self.config.print_per_batch == 0:  # 每多少轮次输出在训练集和验证集上的性能
                     feed_dict[self.keep_prob] = 1.0  # 在验证集上验证时dropout的概率改为0
                     loss_train, acc_train = self.session.run([self.loss, self.acc],
                                                              feed_dict=feed_dict)  # 算一下在这个train_batch上的loss和acc
@@ -173,7 +176,7 @@ class NNModel(Model):
                           + ' Val Loss: {3:>6.2}, Val Acc: {4:>7.2%}, Time: {5} {6}'
                     print(msg.format(total_batch, loss_train, acc_train, loss_val, acc_val, time_dif, improved_str))
                 total_batch += 1
-                if total_batch - last_improved > require_improvement:
+                if total_batch - last_improved > self.require_improvement:
                     # 早停：验证集正确率长期不提升，提前结束训练
                     print("No optimization for a long time, auto-stopping...")
                     flag = True
