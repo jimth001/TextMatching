@@ -19,10 +19,15 @@ class RNNModel(NNModel):
     def __init__(self, config):  # config是配置信息
         super(RNNModel, self).__init__(config)
         self.config = config
-        self.input_x = tf.placeholder(tf.int32, [None, None], name='input_x')  # placeholder只存储一个batch的数据
-        self.input_y = tf.placeholder(tf.float32, [None, None], name='input_y')  # 占位符不设shape，传入参数时会自行匹配
-        self.sequence_len = tf.placeholder(tf.int32, [None], name='sequence_len')
-        self.keep_prob = tf.placeholder(tf.float32, name='keep_prob')
+        self.input_q = tf.placeholder(tf.int32, [None, None], name='input_q')  # placeholder只存储一个batch的数据
+        self.input_r = tf.placeholder(tf.int32, [None, None], name='input_r')  # placeholder只存储一个batch的数据
+        self.q_sequence_len = tf.placeholder(tf.int32, [None], name='q_sequence_len')
+        self.r_sequence_len = tf.placeholder(tf.int32, [None],name='r_sequence_len')
+
+        self.inputs_data.append(self.input_q)
+        self.inputs_data.append(self.input_r)
+        self.inputs_data(self.q_sequence_len)
+        self.inputs_data(self.r_sequence_len)
 
 
     # 输入数据是用在词典中的id表示单词的，因此要有一个统一的词典
@@ -78,11 +83,10 @@ class RNNModel(NNModel):
             correct_pred = tf.equal(tf.argmax(self.input_y, 1), self.y_pred_class)
             self.acc = tf.reduce_mean(tf.cast(correct_pred, tf.float32))
 
-    def feed_data(self, x_batch, y_batch, sequence_len, keep_prob):
-        feed_dict = {
-            self.input_x: x_batch,
-            self.input_y: y_batch,
-            self.sequence_len: sequence_len,
-            self.keep_prob: keep_prob,
-        }
-        return feed_dict
+    def batch_iter(self, input_data, target, batch_size=64):
+        #该模型的数据结构为[[q_list],[r_list]]
+        #[[q,r]*n]
+        super(RNNModel,self).batch_iter(input_data, target, batch_size=64)
+        #todo:
+
+
