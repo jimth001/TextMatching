@@ -11,18 +11,24 @@ import abc
 
 
 class NNConfig(Config):
-    def __init__(self, name, task_type='classification', metric='cross_entropy'):
+    def __init__(self, name, task_type, metric='cross_entropy'):
         super(NNConfig, self).__init__(task_type=task_type, metric=metric)
         # 模型名称。暂时不用。
         self.nn_name = name  # nn名称,str
         # 训练及模型保存相关参数
-        self.save_per_batch = 1000
-        self.print_per_batch = 1000
+        self.save_per_batch = 100
+        self.print_per_batch = 100
         self.batch_size = 128
-        self.learning_rate = 0.001
         self.epoch_num = 5
-        self.dropout_keep_prob = 0.9
-        self.require_improvement = 15 * self.print_per_batch
+        '''
+        self.save_per_batch = 10
+        self.print_per_batch = 10
+        self.batch_size = 16
+        self.epoch_num = 1
+        '''
+        self.learning_rate = 0.001
+        self.dropout_keep_prob = 0.8
+        self.require_improvement = 2 * self.print_per_batch
         # embedding相关参数
         self.embedding_dim = 256  # 词向量维度
         # 配置 Tensorboard，重新训练时，请将tensorboard文件夹删除，不然图会覆盖
@@ -41,28 +47,21 @@ class NNModel(Model):
         self.keep_prob = tf.placeholder(tf.float32, name='keep_prob')
         self.input_y = tf.placeholder(tf.float32, [None, None], name='input_r')  # 占位符不设shape，传入参数时会自行匹配
 
-    def load(self):
+    def load(self,init_nn=True,load_dict=True):
         super(NNModel, self).load(self.config.save_dir)
-        self.word_dict = WordDictionary()
-        self.word_dict.load(self.config.save_dir, 'word_dict')
-        self.target_dict = WordDictionary()
-        self.target_dict.load(self.config.save_dir, 'target_dict')
-        if self.nn_inited == False:
+        if load_dict or self.word_dict is None:
+            self.word_dict = WordDictionary()
+            self.word_dict.load(self.config.save_dir, 'word_dict')
+        if load_dict or self.target_dict is None:
+            self.target_dict = WordDictionary()
+            self.target_dict.load(self.config.save_dir, 'target_dict')
+        if self.nn_inited == False or init_nn:
             self._build_graph(self.word_dict.get_size())
         self.session = tf.Session()
         self.session.run(tf.global_variables_initializer())
         saver = tf.train.Saver()
         saver.restore(self.session, self.config.save_dir)
 
-    def save(self, save_dict=False):
-        super(NNModel, self).save(self.config.save_dir)
-        if save_dict:
-            self.word_dict.save(self.config.save_dir, 'word_dict')
-            self.target_dict.save(self.config.save_dir, 'target_dict')
-        saver = tf.train.Saver()
-        saver.save(sess=self.session, save_path=self.config.save_dir)  # 保存当前的训练结果
-        self.session.close()
-        self.session = None
 
     def feed_data(self, inputs_data, keep_prob, target=None):
         # 每个具体的model要注意定义placeholder的顺序和batch_iter返回的数据的顺序要一致，对应。
@@ -89,15 +88,14 @@ class NNModel(Model):
     @abc.abstractclassmethod
     def batch_iter(self, input_data, target, batch_size=64):
         # 应该返回一个list对应feed_data的inputs_data,还有一个target
-        print("抽象方法测试")
-        return
+        return #经测试，父类写return没关系，不会导致子类调用super后函数直接结束。把它(super)当成一个普通函数来看。
 
     def inference_all(self, input_data):
         super(NNModel, self).inference_all(input_data)
         batches = self.batch_iter(input_data, self.config.batch_size)
         y_pred = []
         for inputs in batches:
-            y_batch_pred = self.session.run([self.y_pred_class], feed_dict=self.feed_data(inputs, 1.0))
+            y_batch_pred = self.session.run([self.y_pred_value], feed_dict=self.feed_data(inputs, 1.0))
             y_pred += list(y_batch_pred[0])
         return y_pred
 
@@ -130,7 +128,7 @@ class NNModel(Model):
         pass
 
     def train_with_preprocessed_data(self, train_data, train_target, val_data, val_target, vocab_size, init_nn=True,
-                                     save_and_quit=False):
+                                     release_resources=False):
         start_time = time.time()
         if init_nn:
             self._build_graph(vocab_size)  # 根据词表大小建立计算图
@@ -190,18 +188,52 @@ class NNModel(Model):
                     break  # 跳出batch
             if flag:  # 跳出epoch
                 break
-        if save_and_quit:
-            self.save()
+        if release_resources:
+            self.session.close()
+            self.session = None
 
-    def train_hotkey(self, train_path, init_nn=True, save_and_quit=False, weight_balanced=False,data_preprocessed=False):  # 一键式训练
-        super(NNModel, self).train_hotkey(train_path)
+    def train_onehotkey(self, train_path, init_nn=True, release_resources=False, weight_balanced=False,data_preprocessed=False):  # 一键式训练
+        super(NNModel, self).train_onehotkey(train_path)
         if data_preprocessed==False:
             word_dict, target_dict = Preprocessor.preprocess_and_save(
-                "../training_testing/nlpcc-iccpol-2016.dbqa.training-data", "../training_testing/",
+                train_path, self.config.save_dir,
                 task_type=self.config.task_type, weight_balanced=weight_balanced)
-            self.word_dict,self.target_dict= Preprocessor.preprocess_and_save("../training_testing/nlpcc-iccpol-2016.dbqa.testing-data",
-                                            "../training_testing/", task_type=self.config.task_type, name="test",
-                                            weight_balanced=False, word_dict=word_dict,
-                                            target_dict=target_dict)
-        train_data,train_target,val_data,val_target,vocab_size=Preprocessor.load_preprocessed_data("../training_testing/",task_type=self.config.task_type)
-        self.train_with_preprocessed_data(train_data,train_target,val_data,val_target,vocab_size,init_nn=init_nn,save_and_quit=save_and_quit)
+        train_data,train_target,val_data,val_target,vocab_size=Preprocessor.load_preprocessed_data_for_train(self.config.save_dir,task_type=self.config.task_type)
+        self.train_with_preprocessed_data(train_data,train_target,val_data,val_target,vocab_size,init_nn=init_nn,release_resources=release_resources)
+
+    def inference_onehotkey(self, test_path,init_nn=True,load_model=True,data_preprocessed=False):
+        #inference,does not care the metrics on test data set,only return the result model predicted
+        if data_preprocessed==False:
+            self.word_dict=WordDictionary()
+            self.target_dict=WordDictionary()
+            self.word_dict.load(self.config.save_dir,"word_dict")
+            self.target_dict.load(self.config.save_dir,"target_dict")
+            self.word_dict,self.target_dict= Preprocessor.preprocess_and_save(test_path,
+                                            self.config.save_dir, task_type=self.config.task_type, name="test",
+                                            weight_balanced=False, word_dict=self.word_dict,
+                                            target_dict=self.target_dict)
+        if load_model==False:
+            self.load(init_nn=init_nn,load_dict=False)
+        x_test,y_test=Preprocessor.load_preprocessed_data_for_test(self.config.save_dir,task_type=self.config.task_type)
+        return self.inference_all(x_test)
+
+    def evaluate_onehotkey(self, test_path, init_nn=True,load_model=True,data_preprocessed=False):
+        if data_preprocessed == False:
+            self.word_dict = WordDictionary()
+            self.target_dict = WordDictionary()
+            self.word_dict.load(self.config.save_dir, "word_dict")
+            self.target_dict.load(self.config.save_dir, "target_dict")
+            self.word_dict, self.target_dict = Preprocessor.preprocess_and_save(test_path,
+                                                                                self.config.save_dir,
+                                                                                task_type=self.config.task_type,
+                                                                                name="test",
+                                                                                weight_balanced=False,
+                                                                                word_dict=self.word_dict,
+                                                                                target_dict=self.target_dict)
+        x_test, y_test = Preprocessor.load_preprocessed_data_for_test(self.config.save_dir,
+                                                                      task_type=self.config.task_type)
+        if len(y_test)==0:
+            raise ValueError("test data has no label，cannot evaluate!")
+        if load_model:#模型没有加载。因此要加载。
+            self.load(init_nn=init_nn,load_dict=False)
+        print(self._evaluate_without_predict_result(x_test,y_test))

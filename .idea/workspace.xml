@@ -2,11 +2,39 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a7940f08-1bd9-49b3-8987-e5b447eecd99" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/model_store/.index" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/model_store/.meta" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tensorboard/textrnn/events.out.tfevents.1518004668.DESKTOP-BP28T15" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tensorboard/textrnn/events.out.tfevents.1518009435.DESKTOP-BP28T15" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Model/Metrics.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/model_store/checkpoint" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/model_store/fea_train" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/model_store/target_dict" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/model_store/word_dict" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/model_store/y_train" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tensorboard/textrnn/events.out.tfevents.1517496169.DESKTOP-BP28T15" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tensorboard/textrnn/events.out.tfevents.1517551316.DESKTOP-BP28T15" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tensorboard/textrnn/events.out.tfevents.1517551682.DESKTOP-BP28T15" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tensorboard/textrnn/events.out.tfevents.1517551869.DESKTOP-BP28T15" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tensorboard/textrnn/events.out.tfevents.1517552013.DESKTOP-BP28T15" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tensorboard/textrnn/events.out.tfevents.1517567331.DESKTOP-BP28T15" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tensorboard/textrnn/events.out.tfevents.1517567398.DESKTOP-BP28T15" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tensorboard/textrnn/events.out.tfevents.1517567473.DESKTOP-BP28T15" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tensorboard/textrnn/events.out.tfevents.1517568558.DESKTOP-BP28T15" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tensorboard/textrnn/events.out.tfevents.1517573992.DESKTOP-BP28T15" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tensorboard/textrnn/events.out.tfevents.1517744793.DESKTOP-BP28T15" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tensorboard/textrnn/events.out.tfevents.1517746217.DESKTOP-BP28T15" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tensorboard/textrnn/events.out.tfevents.1517746935.DESKTOP-BP28T15" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tensorboard/textrnn/events.out.tfevents.1517815720.DESKTOP-BP28T15" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tensorboard/textrnn/events.out.tfevents.1517836560.DESKTOP-BP28T15" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BaseTensorFlow/NNModel.py" afterPath="$PROJECT_DIR$/BaseTensorFlow/NNModel.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BaseTensorFlow/RNNBasedModel.py" afterPath="$PROJECT_DIR$/BaseTensorFlow/RNNBasedModel.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Model/Config.py" afterPath="$PROJECT_DIR$/Model/Config.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Model/Model.py" afterPath="$PROJECT_DIR$/Model/Model.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Preprocess/Preprocessor.py" afterPath="$PROJECT_DIR$/Preprocess/Preprocessor.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/TestTokenizer.py" afterPath="$PROJECT_DIR$/test/TestTokenizer.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/preprocess.py" afterPath="$PROJECT_DIR$/test/preprocess.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -18,11 +46,11 @@
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/TextMatching$RNNBasedModel.coverage" NAME="RNNBasedModel Coverage Results" MODIFIED="1517143174547" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/BaseTensorFlow" />
     <SUITE FILE_PATH="coverage/TextMatching$TestPreprocessor.coverage" NAME="TestPreprocessor Coverage Results" MODIFIED="1517989156788" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
-    <SUITE FILE_PATH="coverage/TextMatching$main.coverage" NAME="main Coverage Results" MODIFIED="1517916013121" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/TextMatching$preprocess.coverage" NAME="preprocess Coverage Results" MODIFIED="1517989180866" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/TextMatching$preprocess.coverage" NAME="preprocess Coverage Results" MODIFIED="1517994241354" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/TextMatching$main.coverage" NAME="main Coverage Results" MODIFIED="1518015072522" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TextMatching$start.coverage" NAME="start Coverage Results" MODIFIED="1517830701925" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TextMatching$TestRNNBasedModel.coverage" NAME="TestRNNBasedModel Coverage Results" MODIFIED="1517980972465" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
-    <SUITE FILE_PATH="coverage/TextMatching$TestTokenizer.coverage" NAME="TestTokenizer Coverage Results" MODIFIED="1517551274746" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/TextMatching$TestTokenizer.coverage" NAME="TestTokenizer Coverage Results" MODIFIED="1517993906574" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
     <SUITE FILE_PATH="coverage/TextMatching$Tokenizer.coverage" NAME="Tokenizer Coverage Results" MODIFIED="1517464855555" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Preprocess" />
   </component>
   <component name="FileEditorManager">
@@ -30,20 +58,33 @@
       <file leaf-file-name="NNModel.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/BaseTensorFlow/NNModel.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="191">
-              <caret line="89" column="8" lean-forward="false" selection-start-line="89" selection-start-column="8" selection-end-line="89" selection-end-column="8" />
+            <state relative-caret-position="418">
+              <caret line="201" column="148" lean-forward="false" selection-start-line="201" selection-start-column="148" selection-end-line="201" selection-end-column="148" />
               <folding>
                 <element signature="e#15#44#0" expanded="true" />
-                <element signature="e#1451#1994#0" expanded="false" />
-                <element signature="e#2041#2421#0" expanded="false" />
-                <element signature="e#2493#2827#0" expanded="false" />
-                <element signature="e#2903#3310#0" expanded="false" />
-                <element signature="e#3546#3883#0" expanded="false" />
-                <element signature="e#3935#4075#0" expanded="false" />
-                <element signature="e#4153#4723#0" expanded="false" />
-                <element signature="e#4768#4827#0" expanded="false" />
-                <element signature="e#4873#4904#0" expanded="false" />
-                <element signature="e#8712#9752#0" expanded="false" />
+                <element signature="e#2347#2681#0" expanded="false" />
+                <element signature="e#2757#3164#0" expanded="false" />
+                <element signature="e#3264#3385#0" expanded="false" />
+                <element signature="e#3436#3773#0" expanded="false" />
+                <element signature="e#3825#3965#0" expanded="false" />
+                <element signature="e#4658#4717#0" expanded="false" />
+                <element signature="e#4763#4794#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Model.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Model/Model.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="206">
+              <caret line="15" column="18" lean-forward="false" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
+              <folding>
+                <element signature="e#15#79#0" expanded="true" />
+                <element signature="e#758#1108#1" expanded="false" />
+                <element signature="e#1184#1282#0" expanded="false" />
+                <element signature="e#1358#1456#0" expanded="false" />
+                <element signature="e#1521#1525#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -53,24 +94,8 @@
         <entry file="file://$PROJECT_DIR$/test/TestTokenizer.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="70">
-              <caret line="2" column="18" lean-forward="false" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
+              <caret line="2" column="52" lean-forward="false" selection-start-line="2" selection-start-column="52" selection-end-line="2" selection-end-column="52" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Model.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Model/Model.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="143">
-              <caret line="13" column="8" lean-forward="false" selection-start-line="13" selection-start-column="8" selection-end-line="13" selection-end-column="8" />
-              <folding>
-                <element signature="e#15#79#0" expanded="true" />
-                <element signature="e#1009#1107#0" expanded="false" />
-                <element signature="e#1182#1280#0" expanded="false" />
-                <element signature="e#1344#1348#0" expanded="false" />
-                <element signature="e#1412#1416#0" expanded="false" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -78,8 +103,8 @@
       <file leaf-file-name="RNNBasedModel.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/BaseTensorFlow/RNNBasedModel.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-773">
-              <caret line="77" column="82" lean-forward="true" selection-start-line="77" selection-start-column="82" selection-end-line="77" selection-end-column="82" />
+            <state relative-caret-position="315">
+              <caret line="15" column="31" lean-forward="false" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
               <folding>
                 <element signature="e#15#62#0" expanded="true" />
               </folding>
@@ -87,44 +112,58 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="preprocess.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/preprocess.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="4" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TestRNNBasedModel.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/TestRNNBasedModel.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Config.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Model/Config.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="14" lean-forward="false" selection-start-line="0" selection-start-column="14" selection-end-line="0" selection-end-column="14" />
+            <state relative-caret-position="175">
+              <caret line="5" column="28" lean-forward="true" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Preprocessor.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Preprocessor.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Preprocess/Preprocessor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="178">
-              <caret line="49" column="31" lean-forward="true" selection-start-line="49" selection-start-column="31" selection-end-line="49" selection-end-column="31" />
+            <state relative-caret-position="418">
+              <caret line="213" column="45" lean-forward="false" selection-start-line="213" selection-start-column="45" selection-end-line="213" selection-end-column="45" />
               <folding>
                 <element signature="e#15#57#0" expanded="true" />
+                <element signature="e#1669#2453#0" expanded="false" />
+                <element signature="e#9106#10459#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="codecs.py" pinned="false" current-in-tab="false">
+        <entry file="file://D:/ProgramData/Miniconda3/envs/dl/Lib/codecs.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-8">
+              <caret line="737" column="37" lean-forward="true" selection-start-line="737" selection-start-column="37" selection-end-line="737" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/main.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="9" column="99" lean-forward="false" selection-start-line="9" selection-start-column="99" selection-end-line="9" selection-end-column="99" />
+              <folding>
+                <element signature="e#15#55#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WordDictionary.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Preprocess/WordDictionary.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="363">
+              <caret line="31" column="8" lean-forward="false" selection-start-line="31" selection-start-column="8" selection-end-line="31" selection-end-column="8" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -160,9 +199,12 @@
       <find>model load</find>
       <find>\\</find>
       <find>open</find>
-      <find>save</find>
       <find>variable</find>
+      <find>方法</find>
       <find>load</find>
+      <find>抽象</find>
+      <find>save</find>
+      <find>require_improvement</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -172,20 +214,21 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/BaseTensorFlow/LRDemo.py" />
-        <option value="$PROJECT_DIR$/test/TestTokenizer.py" />
         <option value="$PROJECT_DIR$/test/TestPreprocessor.py" />
         <option value="$PROJECT_DIR$/start.py" />
         <option value="$PROJECT_DIR$/Preprocess/WordDictionary.py" />
         <option value="$PROJECT_DIR$/__init__.py" />
         <option value="$PROJECT_DIR$/Preprocess/Tokenizer.py" />
-        <option value="$PROJECT_DIR$/main.py" />
-        <option value="$PROJECT_DIR$/test/preprocess.py" />
         <option value="$PROJECT_DIR$/test/TestRNNBasedModel.py" />
-        <option value="$PROJECT_DIR$/BaseTensorFlow/RNNBasedModel.py" />
         <option value="$PROJECT_DIR$/Model/Config.py" />
+        <option value="$PROJECT_DIR$/Model/Metrics.py" />
+        <option value="$PROJECT_DIR$/test/TestTokenizer.py" />
+        <option value="$PROJECT_DIR$/test/preprocess.py" />
+        <option value="$PROJECT_DIR$/BaseTensorFlow/RNNBasedModel.py" />
+        <option value="$PROJECT_DIR$/Preprocess/Preprocessor.py" />
         <option value="$PROJECT_DIR$/Model/Model.py" />
         <option value="$PROJECT_DIR$/BaseTensorFlow/NNModel.py" />
-        <option value="$PROJECT_DIR$/Preprocess/Preprocessor.py" />
+        <option value="$PROJECT_DIR$/main.py" />
       </list>
     </option>
   </component>
@@ -195,7 +238,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="430" />
     <option name="y" value="21" />
     <option name="width" value="1400" />
@@ -269,7 +312,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.preprocess">
+  <component name="RunManager" selected="Python.main">
     <configuration name="TestPreprocessor" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -302,6 +345,24 @@
       <module name="TextMatching" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test/TestRNNBasedModel.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+    </configuration>
+    <configuration name="TestTokenizer" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="TextMatching" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test/TestTokenizer.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -342,38 +403,20 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
     </configuration>
-    <configuration name="start" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="TextMatching" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="D:\MyProjects\pycharm\python\TextMatching\main.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-    </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python.start" />
-      <item index="1" class="java.lang.String" itemvalue="Python.TestPreprocessor" />
-      <item index="2" class="java.lang.String" itemvalue="Python.main" />
-      <item index="3" class="java.lang.String" itemvalue="Python.preprocess" />
-      <item index="4" class="java.lang.String" itemvalue="Python.TestRNNBasedModel" />
+      <item index="0" class="java.lang.String" itemvalue="Python.TestPreprocessor" />
+      <item index="1" class="java.lang.String" itemvalue="Python.main" />
+      <item index="2" class="java.lang.String" itemvalue="Python.preprocess" />
+      <item index="3" class="java.lang.String" itemvalue="Python.TestRNNBasedModel" />
+      <item index="4" class="java.lang.String" itemvalue="Python.TestTokenizer" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.preprocess" />
-        <item index="1" class="java.lang.String" itemvalue="Python.TestPreprocessor" />
-        <item index="2" class="java.lang.String" itemvalue="Python.TestRNNBasedModel" />
-        <item index="3" class="java.lang.String" itemvalue="Python.main" />
-        <item index="4" class="java.lang.String" itemvalue="Python.start" />
+        <item index="0" class="java.lang.String" itemvalue="Python.main" />
+        <item index="1" class="java.lang.String" itemvalue="Python.preprocess" />
+        <item index="2" class="java.lang.String" itemvalue="Python.TestTokenizer" />
+        <item index="3" class="java.lang.String" itemvalue="Python.TestPreprocessor" />
+        <item index="4" class="java.lang.String" itemvalue="Python.TestRNNBasedModel" />
       </list>
     </recent_temporary>
   </component>
@@ -394,21 +437,21 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-11" y="-11" width="1942" height="1042" extended-state="6" />
+    <frame x="-11" y="-11" width="1942" height="1042" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27822122" sideWeight="0.50208336" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295325" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23603192" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16191562" sideWeight="0.49791667" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295325" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1953125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.55986315" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.5587229" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" x="-95" y="296" width="1920" height="490" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.43329534" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15393387" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -475,53 +518,48 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main.py</url>
-          <line>11</line>
+          <line>12</line>
           <option name="timeStamp" value="96" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main.py</url>
-          <line>12</line>
+          <line>13</line>
           <option name="timeStamp" value="97" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main.py</url>
-          <line>13</line>
+          <line>14</line>
           <option name="timeStamp" value="98" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main.py</url>
-          <line>15</line>
+          <line>16</line>
           <option name="timeStamp" value="99" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main.py</url>
-          <line>18</line>
+          <line>20</line>
           <option name="timeStamp" value="100" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/BaseTensorFlow/NNModel.py</url>
-          <line>101</line>
+          <line>99</line>
           <option name="timeStamp" value="122" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/BaseTensorFlow/NNModel.py</url>
-          <line>100</line>
+          <line>98</line>
           <option name="timeStamp" value="123" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/BaseTensorFlow/NNModel.py</url>
-          <line>99</line>
+          <line>97</line>
           <option name="timeStamp" value="124" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/test/TestPreprocessor.py</url>
           <line>13</line>
           <option name="timeStamp" value="125" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/main.py</url>
-          <line>4</line>
-          <option name="timeStamp" value="126" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/test/preprocess.py</url>
@@ -537,61 +575,6 @@
           <url>file://$PROJECT_DIR$/BaseTensorFlow/RNNBasedModel.py</url>
           <line>59</line>
           <option name="timeStamp" value="129" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Preprocess/Preprocessor.py</url>
-          <line>140</line>
-          <option name="timeStamp" value="130" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Preprocess/Preprocessor.py</url>
-          <line>147</line>
-          <option name="timeStamp" value="131" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Preprocess/Preprocessor.py</url>
-          <line>150</line>
-          <option name="timeStamp" value="132" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Preprocess/Preprocessor.py</url>
-          <line>151</line>
-          <option name="timeStamp" value="133" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Preprocess/Preprocessor.py</url>
-          <line>142</line>
-          <option name="timeStamp" value="134" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Preprocess/Preprocessor.py</url>
-          <line>152</line>
-          <option name="timeStamp" value="135" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Preprocess/Preprocessor.py</url>
-          <line>154</line>
-          <option name="timeStamp" value="136" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Preprocess/Preprocessor.py</url>
-          <line>155</line>
-          <option name="timeStamp" value="137" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Preprocess/Preprocessor.py</url>
-          <line>143</line>
-          <option name="timeStamp" value="138" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Preprocess/Preprocessor.py</url>
-          <line>146</line>
-          <option name="timeStamp" value="139" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Preprocess/Preprocessor.py</url>
-          <line>145</line>
-          <option name="timeStamp" value="140" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/test/TestRNNBasedModel.py</url>
@@ -649,17 +632,67 @@
           <option name="timeStamp" value="158" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Model/Model.py</url>
-          <line>1</line>
-          <option name="timeStamp" value="159" />
+          <url>file://$PROJECT_DIR$/BaseTensorFlow/NNModel.py</url>
+          <line>130</line>
+          <option name="timeStamp" value="160" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/BaseTensorFlow/NNModel.py</url>
-          <line>132</line>
-          <option name="timeStamp" value="160" />
+          <line>90</line>
+          <option name="timeStamp" value="165" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/BaseTensorFlow/NNModel.py</url>
+          <line>89</line>
+          <option name="timeStamp" value="166" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/BaseTensorFlow/RNNBasedModel.py</url>
+          <line>103</line>
+          <option name="timeStamp" value="167" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/BaseTensorFlow/RNNBasedModel.py</url>
+          <line>102</line>
+          <option name="timeStamp" value="168" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/BaseTensorFlow/RNNBasedModel.py</url>
+          <line>104</line>
+          <option name="timeStamp" value="169" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/BaseTensorFlow/RNNBasedModel.py</url>
+          <line>105</line>
+          <option name="timeStamp" value="170" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/BaseTensorFlow/RNNBasedModel.py</url>
+          <line>106</line>
+          <option name="timeStamp" value="171" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/BaseTensorFlow/RNNBasedModel.py</url>
+          <line>107</line>
+          <option name="timeStamp" value="172" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/BaseTensorFlow/RNNBasedModel.py</url>
+          <line>114</line>
+          <option name="timeStamp" value="173" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Preprocess/Preprocessor.py</url>
+          <line>149</line>
+          <option name="timeStamp" value="174" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/BaseTensorFlow/NNModel.py</url>
+          <line>133</line>
+          <option name="timeStamp" value="180" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="161" />
+      <option name="time" value="184" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
@@ -674,16 +707,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Model/Model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="700">
-          <caret line="20" column="12" lean-forward="true" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
-          <folding>
-            <element signature="e#15#79#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/BaseTensorFlow/RNNBasedModel.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6685">
@@ -699,7 +722,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#15#55#0" expanded="false" />
+            <element signature="e#15#55#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -708,6 +731,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -740,7 +764,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#15#55#0" expanded="false" />
+            <element signature="e#15#55#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -749,6 +773,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -780,13 +805,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="281">
           <caret line="180" column="9" lean-forward="false" selection-start-line="180" selection-start-column="9" selection-end-line="180" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/ProgramData/Miniconda3/envs/dl/Lib/site-packages/tensorflow/python/ops/embedding_ops.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="35">
-          <caret line="259" column="4" lean-forward="false" selection-start-line="259" selection-start-column="4" selection-end-line="259" selection-end-column="4" />
         </state>
       </provider>
     </entry>
@@ -827,21 +845,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/ProgramData/Miniconda3/envs/dl/Lib/codecs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="93">
-          <caret line="308" column="0" lean-forward="false" selection-start-line="308" selection-start-column="0" selection-end-line="308" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/ProgramData/Miniconda3/envs/dl/Lib/site-packages/tensorflow/python/client/session.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="1103" column="0" lean-forward="false" selection-start-line="1103" selection-start-column="0" selection-end-line="1103" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/model_store/word_dict" />
     <entry file="file://$PROJECT_DIR$/model_store/target_dict" />
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydevd_bundle/pydevd_comm.py">
@@ -876,6 +879,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -914,16 +918,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="8" column="40" lean-forward="false" selection-start-line="8" selection-start-column="40" selection-end-line="8" selection-end-column="40" />
-          <folding>
-            <element signature="e#15#55#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://D:/ProgramData/Miniconda3/envs/dl/Lib/site-packages/tensorflow/python/ops/rnn_cell_impl.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="12635">
@@ -944,14 +938,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-595">
           <caret line="1060" column="4" lean-forward="false" selection-start-line="1060" selection-start-column="4" selection-end-line="1060" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/TestRNNBasedModel.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -988,50 +974,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/BaseTensorFlow/NNModel.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="89" column="8" lean-forward="false" selection-start-line="89" selection-start-column="8" selection-end-line="89" selection-end-column="8" />
-          <folding>
-            <element signature="e#15#44#0" expanded="true" />
-            <element signature="e#1451#1994#0" expanded="false" />
-            <element signature="e#2041#2421#0" expanded="false" />
-            <element signature="e#2493#2827#0" expanded="false" />
-            <element signature="e#2903#3310#0" expanded="false" />
-            <element signature="e#3546#3883#0" expanded="false" />
-            <element signature="e#3935#4075#0" expanded="false" />
-            <element signature="e#4153#4723#0" expanded="false" />
-            <element signature="e#4768#4827#0" expanded="false" />
-            <element signature="e#4873#4904#0" expanded="false" />
-            <element signature="e#8712#9752#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/BaseTensorFlow/RNNBasedModel.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-773">
-          <caret line="77" column="82" lean-forward="true" selection-start-line="77" selection-start-column="82" selection-end-line="77" selection-end-column="82" />
-          <folding>
-            <element signature="e#15#62#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Model/Model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="13" column="8" lean-forward="false" selection-start-line="13" selection-start-column="8" selection-end-line="13" selection-end-column="8" />
-          <folding>
-            <element signature="e#15#79#0" expanded="true" />
-            <element signature="e#1009#1107#0" expanded="false" />
-            <element signature="e#1182#1280#0" expanded="false" />
-            <element signature="e#1344#1348#0" expanded="false" />
-            <element signature="e#1412#1416#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Preprocess/Tokenizer.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
@@ -1040,46 +982,137 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/TestTokenizer.py">
+    <entry file="file://$PROJECT_DIR$/Model/Metrics.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="70">
-          <caret line="2" column="18" lean-forward="false" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
+        <state relative-caret-position="105">
+          <caret line="3" column="20" lean-forward="false" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/TestRNNBasedModel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/preprocess.py">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/ProgramData/Miniconda3/envs/dl/Lib/site-packages/tensorflow/python/client/session.py">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
-          <caret line="4" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <caret line="894" column="0" lean-forward="false" selection-start-line="894" selection-start-column="0" selection-end-line="894" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/ProgramData/Miniconda3/envs/dl/Lib/site-packages/tensorflow/python/ops/embedding_ops.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="324" column="0" lean-forward="false" selection-start-line="324" selection-start-column="0" selection-end-line="324" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/ProgramData/Miniconda3/envs/dl/Lib/codecs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-8">
+          <caret line="737" column="37" lean-forward="true" selection-start-line="737" selection-start-column="37" selection-end-line="737" selection-end-column="37" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Preprocess/WordDictionary.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="22" column="8" lean-forward="false" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="8" />
-          <folding>
-            <element signature="e#15#25#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="363">
+          <caret line="31" column="8" lean-forward="false" selection-start-line="31" selection-start-column="8" selection-end-line="31" selection-end-column="8" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Model/Config.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="14" lean-forward="false" selection-start-line="0" selection-start-column="14" selection-end-line="0" selection-end-column="14" />
+        <state relative-caret-position="175">
+          <caret line="5" column="28" lean-forward="true" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BaseTensorFlow/RNNBasedModel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="15" column="31" lean-forward="false" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
+          <folding>
+            <element signature="e#15#62#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/TestTokenizer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="70">
+          <caret line="2" column="52" lean-forward="false" selection-start-line="2" selection-start-column="52" selection-end-line="2" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model/Model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="206">
+          <caret line="15" column="18" lean-forward="false" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
+          <folding>
+            <element signature="e#15#79#0" expanded="true" />
+            <element signature="e#758#1108#1" expanded="false" />
+            <element signature="e#1184#1282#0" expanded="false" />
+            <element signature="e#1358#1456#0" expanded="false" />
+            <element signature="e#1521#1525#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Preprocess/Preprocessor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="49" column="31" lean-forward="true" selection-start-line="49" selection-start-column="31" selection-end-line="49" selection-end-column="31" />
+        <state relative-caret-position="418">
+          <caret line="213" column="45" lean-forward="false" selection-start-line="213" selection-start-column="45" selection-end-line="213" selection-end-column="45" />
           <folding>
             <element signature="e#15#57#0" expanded="true" />
+            <element signature="e#1669#2453#0" expanded="false" />
+            <element signature="e#9106#10459#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BaseTensorFlow/NNModel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="201" column="148" lean-forward="false" selection-start-line="201" selection-start-column="148" selection-end-line="201" selection-end-column="148" />
+          <folding>
+            <element signature="e#15#44#0" expanded="true" />
+            <element signature="e#2347#2681#0" expanded="false" />
+            <element signature="e#2757#3164#0" expanded="false" />
+            <element signature="e#3264#3385#0" expanded="false" />
+            <element signature="e#3436#3773#0" expanded="false" />
+            <element signature="e#3825#3965#0" expanded="false" />
+            <element signature="e#4658#4717#0" expanded="false" />
+            <element signature="e#4763#4794#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="9" column="99" lean-forward="false" selection-start-line="9" selection-start-column="99" selection-end-line="9" selection-end-column="99" />
+          <folding>
+            <element signature="e#15#55#0" expanded="true" />
           </folding>
         </state>
       </provider>

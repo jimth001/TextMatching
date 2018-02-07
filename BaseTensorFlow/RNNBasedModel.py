@@ -7,8 +7,8 @@ import numpy as np
 
 
 class RNNConfig(NNConfig):
-    def __init__(self, name,config_path=None):  ##这里是网络独有的结构的相关参数
-        super(RNNConfig, self).__init__(name,task_type=None, metric=None)
+    def __init__(self, name,task_type,config_path=None):  ##这里是网络独有的结构的相关参数
+        super(RNNConfig, self).__init__(name,task_type=task_type, metric=None)
         if config_path is None:
             self.mlp_hidden_layers_num = 128  # mlp的隐含层神经元个数
             self.hidden_dim = self.embedding_dim  # rnn_cell隐藏层神经元个数。
@@ -71,11 +71,11 @@ class RNNModel(NNModel):
             # 全连接层，后面接dropout以及relu激活
             if self.config.rnn=='lstm':#return (c,h),h is output,c is the hidden state
                 # todo q*mat*r得到一个数，拼到特征向量中
-                interaction=tf.matmul(a=tf.matmul(query_state[0][1],matrix),b=response_state[0][1],transpose_b=True)
-                fc_input = tf.concat([query_state[0][1],interaction, response_state[0][1]], axis=1)  # todo 搞清这个得好好看看原理和读源码。到底该取0还是1
+                #interaction=tf.matmul(a=tf.matmul(query_state[0][1],matrix),b=response_state[0][1],transpose_b=True)
+                fc_input = tf.concat([query_state[0][1], response_state[0][1]], axis=1)  # todo 搞清这个得好好看看原理和读源码。到底该取0还是1
             else:#GRU只有一个state
-                interaction = tf.matmul(a=tf.matmul(query_state[0], matrix), b=response_state[0],transpose_b=True)
-                fc_input=tf.concat([query_state[0],interaction,response_state[0]])
+                #interaction = tf.matmul(a=tf.matmul(query_state[0], matrix), b=response_state[0],transpose_b=True)
+                fc_input=tf.concat([query_state[0],response_state[0]])
                 # todo q*mat*r得到一个数，拼到特征向量中
             fc = tf.layers.dense(fc_input, self.config.hidden_dim, name='fc1')
             fc = tf.contrib.layers.dropout(fc, self.keep_prob)
@@ -93,7 +93,7 @@ class RNNModel(NNModel):
             # 优化器。指定优化方法，学习率，最大化还是最小化，优化目标函数为交叉熵
             self.optim = tf.train.AdamOptimizer(learning_rate=self.config.learning_rate).minimize(self.loss)
 
-        with tf.name_scope("evaluate metrics"):
+        with tf.name_scope("evaluate_metrics"):
             # 准确率
             correct_pred = tf.equal(tf.argmax(self.input_y, 1), self.y_pred_class)
             self.acc = tf.reduce_mean(tf.cast(correct_pred, tf.float32))

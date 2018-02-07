@@ -1,3 +1,3 @@
 from Preprocess.Tokenizer import Tokenizer
 tokenizer=Tokenizer()
-print(tokenizer.parser("设置用户词典，用户词典中的词会被打上uw标签。词典中每一个词一行，UTF8编码"))
+print(tokenizer.parser("田欣作为一名心理顾问，佛家居士，她推行的自疗方式是什么？"))

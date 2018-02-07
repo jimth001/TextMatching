@@ -105,54 +105,115 @@ class Preprocessor:
         return new_x, word_dict
 
     @staticmethod
-    def save_preprocessed_data(data, path, name,task_type="matching"):
-        # data：要存储的数据
+    def save_preprocessed_data(data, path, name, task_type="matching"):
+        # data：要存储的数据 shape [seg_num,data_num,seg_contain]
         # path：存储路径
         # name：文件名称
-        if task_type=="matching":
-            file = codecs.open(path + name, 'w+', encoding='utf-8')
-            wr = csv.writer(file)
-            for d in data:
-                wr.writerow(d[0])
-                wr.writerow(d[1])
-            file.close()
+        if task_type == "matching":
+            if name.__contains__("fea_"):
+                file = codecs.open(path + name, 'w+', encoding='utf-8')
+                wr = csv.writer(file)
+                for d in data:
+                    wr.writerow(d[0])
+                    wr.writerow(d[1])
+                file.close()
+            elif name.__contains__("y_"):
+                file = codecs.open(path + name, 'w+', encoding='utf-8')
+                wr = csv.writer(file)
+                for d in data:
+                    wr.writerow(d)
+                file.close()
 
     @staticmethod
-    def load_preprocessed_data(data_path, task_type="matching"):
+    def load_preprocessed_data_for_train(store_path, task_type="matching"):
         # data_path文件存储路径
         # 根据任务名称正确读取所需数据并返回
+        if task_type == "matching":
+            q_train = []
+            r_train = []
+            y_train = []
+            file = codecs.open(store_path + "fea_train", 'r', encoding='utf-8')
+            counter = 0
+            for line in file:
+                if counter % 2 == 0:
+                    q_train.append([int(x) for x in line.split(',')])
+                else:
+                    r_train.append([int(x) for x in line.split(',')])
+                counter += 1
+            file.close()
+            file = codecs.open(store_path + "y_train", 'r', encoding='utf-8')
+            for line in file:
+                y_train.append([int(x) for x in line.split(',')])
+            file.close()
+            if not (len(q_train) == len(r_train) and len(q_train) == len(y_train)):
+                raise ValueError("q_train and r_train are not in same length")
+            iter = Preprocessor.generate_train_and_cross_validation([q_train, r_train], y_train)
+            x_train, y_train, x_val, y_val = iter.__next__()
+            file=codecs.open(store_path + "word_dict", 'r', encoding='utf-8')
+            word_counter = 0
+            for line in file:
+                if line!='':
+                    word_counter += 1
+            file.close()
+            return x_train, y_train, x_val, y_val,word_counter
 
-        # todo
-
-        pass
+    @staticmethod
+    def load_preprocessed_data_for_test(store_path,task_type="matching"):
+        #if test data has label,y_test will take labels return
+        #if not,y_test will be a empty list
+        if task_type=="matching":
+            q_test=[]
+            r_test=[]
+            y_test=[]
+            file = codecs.open(store_path + "fea_test", 'r', encoding='utf-8')
+            counter = 0
+            for line in file:
+                if counter % 2 == 0:
+                    q_test.append([int(x) for x in line.split(',')])
+                else:
+                    r_test.append([int(x) for x in line.split(',')])
+                counter += 1
+            file.close()
+            try:
+                file = codecs.open(store_path + "y_test", 'r', encoding='utf-8')
+                for line in file:
+                    y_test.append([int(x) for x in line.split(',')])
+                file.close()
+            except:
+                pass
+            return [q_test,r_test],y_test
 
     @staticmethod
     def preprocess_and_save(data_path, store_path, task_type="matching", name="train", weight_balanced=False,
-                                       word_dict=None,
-                                       target_dict=None):
-        #for both train and test
+                            word_dict=None,
+                            target_dict=None):
+        # for both train and test
         # 载入训练集,划分验证集：
-        if name=="train":
-            dict_append=True
+        if name == "train":
+            dict_append = True
         else:
-            dict_append=False
+            dict_append = False
         if task_type == "matching":
             print("loading data......")
             q_train, r_train, y_train = Preprocessor.load_data(data_path, task_type)
             print("converting sentence 2 word-index vector......")
-            q_train, word_dict = Preprocessor.seg_and_2_int(x_data=q_train, word_dict=word_dict, dict_append=dict_append)
-            r_train, word_dict = Preprocessor.seg_and_2_int(x_data=r_train, word_dict=word_dict, dict_append=dict_append)
+            q_train, word_dict = Preprocessor.seg_and_2_int(x_data=q_train, word_dict=word_dict,
+                                                            dict_append=dict_append)
+            r_train, word_dict = Preprocessor.seg_and_2_int(x_data=r_train, word_dict=word_dict,
+                                                            dict_append=dict_append)
+            q_r_train = [[q_train[x], r_train[x]] for x in range(len(q_train))]  # packed q and r
             if weight_balanced and len(y_train) > 0:
                 print("balancing data......")
-                q_r_train = [[q_train[x], r_train[x]] for x in range(len(q_train))]  # packed q and r
-                q_r_train = Preprocessor.get_balanced_data(q_r_train, y_train)
+                q_r_train, y_train = Preprocessor.get_balanced_data(q_r_train, y_train)
             if len(y_train) > 0:  # 是有label的样本
                 print("converting target 2 one-hot vector......")
                 y_train, target_dict = Preprocessor.target_2_one_hot(y_train, target_dict=target_dict)
-                target_dict.save(store_path, 'target_dict')
+                if dict_append:
+                    target_dict.save(store_path, 'target_dict')
                 Preprocessor.save_preprocessed_data(y_train, store_path, 'y_' + name)
-            print("saving......")
-            word_dict.save(store_path, 'word_dict')
+            print("saving preprocessed result......")
+            if dict_append:
+                word_dict.save(store_path, 'word_dict')
             Preprocessor.save_preprocessed_data(q_r_train, store_path, 'fea_' + name)
             return word_dict, target_dict
 
@@ -193,9 +254,9 @@ class Preprocessor:
 
     @staticmethod
     def generate_train_and_cross_validation(x, y, n_fold=4):  # 根据x，y划分n-fold交叉验证的数据集
-        #若输入x有n个m维特征。则x.shape is [n,data_num,m]
+        # 若输入x有n个m维特征。则x.shape is [n,data_num,m]
         #
-        if len(x[0]) != len(y[0]):
+        if len(x[0]) != len(y):
             raise ValueError("x和y长度不一致")
         val_len = int(len(x[0]) / n_fold)
         start_id = 0
@@ -203,9 +264,10 @@ class Preprocessor:
         x_shuffle = [[fea[i] for i in indices] for fea in x]
         y_shuffle = [y[i] for i in indices]
         for i in range(n_fold):
-            x_train = [[fea[r] for r in range(len(x)) if (r < start_id or r > start_id + val_len)] for fea in x_shuffle]
-            y_train = [y_shuffle[r] for r in range(len(x)) if (r < start_id or r > start_id + val_len)]
-            x_val = [[fea[r] for r in range(len(x)) if (r >= start_id and r <= start_id + val_len)] for fea in x_shuffle]
-            y_val = [y_shuffle[r] for r in range(len(x)) if (r >= start_id and r <= start_id + val_len)]
+            x_train = [[fea[r] for r in range(len(fea)) if (r < start_id or r > start_id + val_len)] for fea in x_shuffle]
+            y_train = [y_shuffle[r] for r in range(len(y_shuffle)) if (r < start_id or r > start_id + val_len)]
+            x_val = [[fea[r] for r in range(len(fea)) if (r >= start_id and r <= start_id + val_len)] for fea in
+                     x_shuffle]
+            y_val = [y_shuffle[r] for r in range(len(y_shuffle)) if (r >= start_id and r <= start_id + val_len)]
             start_id = start_id + val_len + 1
             yield x_train, y_train, x_val, y_val
