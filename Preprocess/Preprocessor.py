@@ -188,7 +188,23 @@ class Preprocessor:
             y_test = []
             file = codecs.open(store_path + "fea_test", 'r', encoding='utf-8')
             counter = 0
+            skip = False
+            skip_index = []
             for line in file:
+                if skip:  ###为了处理空行
+                    counter += 1
+                    skip = False
+                    continue
+                if line.strip('\r\n').strip('\n') == '':
+                    if counter % 2 == 0:  ##query是空的
+                        skip_index.append(counter)
+                        counter += 1
+                        skip = True
+                    else:
+                        skip_index.append(counter - 1)
+                        q_test.pop()  # response为空，去掉对应的query
+                        counter += 1
+                    continue
                 if counter % 2 == 0:
                     q_test.append([int(x) for x in line.strip('\r\n').strip('\n').split(',')])
                 else:
@@ -197,11 +213,20 @@ class Preprocessor:
             file.close()
             try:
                 file = codecs.open(store_path + "y_test", 'r', encoding='utf-8')
+                counter = 0
                 for line in file:
-                    y_test.append([int(x) for x in line.strip('\r\n').strip('\n').split(',')])
+                    if not counter * 2 in skip_index:
+                        y_test.append([int(x) for x in line.strip('\r\n').strip('\n').split(',')])
+                    counter+=1
                 file.close()
             except:
                 pass
+            if len(y_test)==0:
+                if len(q_test)!=len(r_test):
+                    raise ValueError("q_test,r_test are not in same length")
+            else:
+                if not(len(q_test)==len(r_test) and len(y_test)==len(q_test)):
+                    raise ValueError("q_test,r_test and y_test are not in same length")
             return [q_test, r_test], y_test
 
     @staticmethod
