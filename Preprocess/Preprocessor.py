@@ -83,10 +83,12 @@ class Preprocessor:
                 for word in seg_rst:
                     index = dict.get_index(word)
                     if index is None:
+                        word_frequency_dict[word] = 1  # 新词，词频为1
                         dict.add_word(word)
                         sen_vec.append(dict.get_index(word))
                     else:
                         sen_vec.append(index)
+                        word_frequency_dict[word] += 1  # 旧词，词频+=1
                 new_x.append(sen_vec)
             word_dict = dict
         else:
@@ -134,54 +136,73 @@ class Preprocessor:
             y_train = []
             file = codecs.open(store_path + "fea_train", 'r', encoding='utf-8')
             counter = 0
+            skip = False
+            skip_index = []
             for line in file:
+                if skip:  ###为了处理空行
+                    counter += 1
+                    skip = False
+                    continue
+                if line.strip('\r\n').strip('\n') == '':
+                    if counter % 2 == 0:  ##query是空的
+                        skip_index.append(counter)
+                        counter += 1
+                        skip = True
+                    else:
+                        skip_index.append(counter - 1)
+                        q_train.pop()  # response为空，去掉对应的query
+                        counter += 1
+                    continue
                 if counter % 2 == 0:
-                    q_train.append([int(x) for x in line.split(',')])
+                    q_train.append([int(x) for x in line.strip('\r\n').strip('\n').split(',')])
                 else:
-                    r_train.append([int(x) for x in line.split(',')])
+                    r_train.append([int(x) for x in line.strip('\r\n').strip('\n').split(',')])
                 counter += 1
             file.close()
             file = codecs.open(store_path + "y_train", 'r', encoding='utf-8')
+            counter = 0
             for line in file:
-                y_train.append([int(x) for x in line.split(',')])
+                if not counter * 2 in skip_index:
+                    y_train.append([int(x) for x in line.strip('\r\n').strip('\n').split(',')])
+                counter += 1
             file.close()
             if not (len(q_train) == len(r_train) and len(q_train) == len(y_train)):
-                raise ValueError("q_train and r_train are not in same length")
+                raise ValueError("q_train,r_train and y_train are not in same length")
             iter = Preprocessor.generate_train_and_cross_validation([q_train, r_train], y_train)
             x_train, y_train, x_val, y_val = iter.__next__()
-            file=codecs.open(store_path + "word_dict", 'r', encoding='utf-8')
+            file = codecs.open(store_path + "word_dict", 'r', encoding='utf-8')
             word_counter = 0
             for line in file:
-                if line!='':
+                if line != '':
                     word_counter += 1
             file.close()
-            return x_train, y_train, x_val, y_val,word_counter
+            return x_train, y_train, x_val, y_val, word_counter
 
     @staticmethod
-    def load_preprocessed_data_for_test(store_path,task_type="matching"):
-        #if test data has label,y_test will take labels return
-        #if not,y_test will be a empty list
-        if task_type=="matching":
-            q_test=[]
-            r_test=[]
-            y_test=[]
+    def load_preprocessed_data_for_test(store_path, task_type="matching"):
+        # if test data has label,y_test will take labels return
+        # if not,y_test will be a empty list
+        if task_type == "matching":
+            q_test = []
+            r_test = []
+            y_test = []
             file = codecs.open(store_path + "fea_test", 'r', encoding='utf-8')
             counter = 0
             for line in file:
                 if counter % 2 == 0:
-                    q_test.append([int(x) for x in line.split(',')])
+                    q_test.append([int(x) for x in line.strip('\r\n').strip('\n').split(',')])
                 else:
-                    r_test.append([int(x) for x in line.split(',')])
+                    r_test.append([int(x) for x in line.strip('\r\n').strip('\n').split(',')])
                 counter += 1
             file.close()
             try:
                 file = codecs.open(store_path + "y_test", 'r', encoding='utf-8')
                 for line in file:
-                    y_test.append([int(x) for x in line.split(',')])
+                    y_test.append([int(x) for x in line.strip('\r\n').strip('\n').split(',')])
                 file.close()
             except:
                 pass
-            return [q_test,r_test],y_test
+            return [q_test, r_test], y_test
 
     @staticmethod
     def preprocess_and_save(data_path, store_path, task_type="matching", name="train", weight_balanced=False,
@@ -264,7 +285,8 @@ class Preprocessor:
         x_shuffle = [[fea[i] for i in indices] for fea in x]
         y_shuffle = [y[i] for i in indices]
         for i in range(n_fold):
-            x_train = [[fea[r] for r in range(len(fea)) if (r < start_id or r > start_id + val_len)] for fea in x_shuffle]
+            x_train = [[fea[r] for r in range(len(fea)) if (r < start_id or r > start_id + val_len)] for fea in
+                       x_shuffle]
             y_train = [y_shuffle[r] for r in range(len(y_shuffle)) if (r < start_id or r > start_id + val_len)]
             x_val = [[fea[r] for r in range(len(fea)) if (r >= start_id and r <= start_id + val_len)] for fea in
                      x_shuffle]

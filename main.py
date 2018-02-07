@@ -7,7 +7,7 @@ if __name__ == "__main__":
     config = RNNBasedModel.RNNConfig("my_rnn","matching")
     print("starting build nn model")
     rnn = RNNBasedModel.RNNModel(config)
-    rnn.train_onehotkey("./training_testing/nlpcc-iccpol-2016.dbqa.training-data",release_resources=True, weight_balanced=True)
+    rnn.train_onehotkey("./training_testing/nlpcc-iccpol-2016.dbqa.training-data",data_preprocessed=True,release_resources=True, weight_balanced=True)
     print("training finished")
     rnn.evaluate_onehotkey("./training_testing/nlpcc-iccpol-2016.dbqa.testing-data",init_nn=False,load_model=True,data_preprocessed=False)
     '''x_test, y_test = Preprocessor.load_data("./training_testing/nlpcc-iccpol-2016.dbqa.testing-data")
