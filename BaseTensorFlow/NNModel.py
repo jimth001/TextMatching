@@ -37,6 +37,7 @@ class NNModel(Model):
         self.session = None
         self.nn_inited = False
         self.inputs_data = []
+        self.metrics=[]
         self.keep_prob = tf.placeholder(tf.float32, name='keep_prob')
         self.input_y = tf.placeholder(tf.float32, [None, None], name='input_r')  # 占位符不设shape，传入参数时会自行匹配
 

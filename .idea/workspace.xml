@@ -2,18 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a7940f08-1bd9-49b3-8987-e5b447eecd99" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/training_testing/target_dict" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/training_testing/word_dict" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/training_testing/x_test" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/training_testing/x_train" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/training_testing/y_test" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/training_testing/y_train" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/TestRNNBasedModel.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BaseTensorFlow/NNModel.py" afterPath="$PROJECT_DIR$/BaseTensorFlow/NNModel.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BaseTensorFlow/RNNBasedModel.py" afterPath="$PROJECT_DIR$/BaseTensorFlow/RNNBasedModel.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Preprocess/Preprocessor.py" afterPath="$PROJECT_DIR$/Preprocess/Preprocessor.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/preprocess.py" afterPath="$PROJECT_DIR$/test/preprocess.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -28,40 +20,29 @@
     <SUITE FILE_PATH="coverage/TextMatching$main.coverage" NAME="main Coverage Results" MODIFIED="1517916013121" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TextMatching$preprocess.coverage" NAME="preprocess Coverage Results" MODIFIED="1517920554425" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
     <SUITE FILE_PATH="coverage/TextMatching$start.coverage" NAME="start Coverage Results" MODIFIED="1517830701925" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/TextMatching$TestRNNBasedModel.coverage" NAME="TestRNNBasedModel Coverage Results" MODIFIED="1517980972465" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
     <SUITE FILE_PATH="coverage/TextMatching$TestTokenizer.coverage" NAME="TestTokenizer Coverage Results" MODIFIED="1517551274746" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
     <SUITE FILE_PATH="coverage/TextMatching$Tokenizer.coverage" NAME="Tokenizer Coverage Results" MODIFIED="1517464855555" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Preprocess" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
-      <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="8" column="40" lean-forward="false" selection-start-line="8" selection-start-column="40" selection-end-line="8" selection-end-column="40" />
-              <folding>
-                <element signature="e#15#55#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="NNModel.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/BaseTensorFlow/NNModel.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="371">
-              <caret line="194" column="0" lean-forward="true" selection-start-line="194" selection-start-column="0" selection-end-line="194" selection-end-column="0" />
+            <state relative-caret-position="-70">
+              <caret line="20" column="13" lean-forward="false" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
               <folding>
                 <element signature="e#15#44#0" expanded="true" />
-                <element signature="e#2466#2800#0" expanded="false" />
-                <element signature="e#2876#3283#0" expanded="false" />
-                <element signature="e#3383#3468#0" expanded="false" />
-                <element signature="e#3519#3904#0" expanded="false" />
-                <element signature="e#3956#4096#0" expanded="false" />
-                <element signature="e#4174#4741#0" expanded="false" />
-                <element signature="e#4786#4845#0" expanded="false" />
-                <element signature="e#4891#4922#0" expanded="false" />
-                <element signature="e#5108#8611#0" expanded="false" />
-                <element signature="e#8728#12631#0" expanded="false" />
+                <element signature="e#2490#2824#0" expanded="false" />
+                <element signature="e#2900#3307#0" expanded="false" />
+                <element signature="e#3407#3492#0" expanded="false" />
+                <element signature="e#3543#3928#0" expanded="false" />
+                <element signature="e#3980#4120#0" expanded="false" />
+                <element signature="e#4198#4765#0" expanded="false" />
+                <element signature="e#4810#4869#0" expanded="false" />
+                <element signature="e#4915#4946#0" expanded="false" />
+                <element signature="e#5132#8635#0" expanded="false" />
+                <element signature="e#8752#12655#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -70,8 +51,8 @@
       <file leaf-file-name="Preprocessor.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Preprocess/Preprocessor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="453">
-              <caret line="197" column="36" lean-forward="false" selection-start-line="197" selection-start-column="36" selection-end-line="197" selection-end-column="36" />
+            <state relative-caret-position="-6017">
+              <caret line="11" column="27" lean-forward="false" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="27" />
               <folding>
                 <element signature="e#15#57#0" expanded="true" />
                 <element signature="e#6287#7640#0" expanded="false" />
@@ -84,30 +65,68 @@
       <file leaf-file-name="RNNBasedModel.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/BaseTensorFlow/RNNBasedModel.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="268">
-              <caret line="87" column="18" lean-forward="true" selection-start-line="87" selection-start-column="18" selection-end-line="87" selection-end-column="18" />
-              <folding>
-                <element signature="e#1382#3652#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="preprocess.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/preprocess.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="70">
-              <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+            <state relative-caret-position="198">
+              <caret line="76" column="0" lean-forward="false" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Tokenizer.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Preprocess/Tokenizer.py">
+      <file leaf-file-name="core.py" pinned="false" current-in-tab="false">
+        <entry file="file://D:/ProgramData/Miniconda3/envs/dl/Lib/site-packages/tensorflow/python/layers/core.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="9" column="27" lean-forward="false" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
+            <state relative-caret-position="99">
+              <caret line="192" column="41" lean-forward="false" selection-start-line="192" selection-start-column="34" selection-end-line="192" selection-end-column="41" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="common_shapes.py" pinned="false" current-in-tab="false">
+        <entry file="file://D:/ProgramData/Miniconda3/envs/dl/Lib/site-packages/tensorflow/python/framework/common_shapes.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="134">
+              <caret line="690" column="0" lean-forward="false" selection-start-line="690" selection-start-column="0" selection-end-line="690" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="rnn_cell_impl.py" pinned="false" current-in-tab="false">
+        <entry file="file://D:/ProgramData/Miniconda3/envs/dl/Lib/site-packages/tensorflow/python/ops/rnn_cell_impl.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="12635">
+              <caret line="387" column="26" lean-forward="false" selection-start-line="387" selection-start-column="26" selection-end-line="387" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="rnn.py" pinned="false" current-in-tab="false">
+        <entry file="file://D:/ProgramData/Miniconda3/envs/dl/Lib/site-packages/tensorflow/python/ops/rnn.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15295">
+              <caret line="453" column="46" lean-forward="false" selection-start-line="453" selection-start-column="46" selection-end-line="453" selection-end-column="46" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TestRNNBasedModel.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/TestRNNBasedModel.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="175">
+              <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="array_ops.py" pinned="false" current-in-tab="false">
+        <entry file="file://D:/ProgramData/Miniconda3/envs/dl/Lib/site-packages/tensorflow/python/ops/array_ops.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-595">
+              <caret line="1060" column="4" lean-forward="false" selection-start-line="1060" selection-start-column="4" selection-end-line="1060" selection-end-column="4" />
               <folding />
             </state>
           </provider>
@@ -116,21 +135,11 @@
       <file leaf-file-name="WordDictionary.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Preprocess/WordDictionary.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="35">
+            <state relative-caret-position="700">
               <caret line="22" column="8" lean-forward="false" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="8" />
               <folding>
                 <element signature="e#15#25#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Config.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Model/Config.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
-              <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -189,6 +198,7 @@
         <option value="$PROJECT_DIR$/test/preprocess.py" />
         <option value="$PROJECT_DIR$/Preprocess/Preprocessor.py" />
         <option value="$PROJECT_DIR$/BaseTensorFlow/NNModel.py" />
+        <option value="$PROJECT_DIR$/test/TestRNNBasedModel.py" />
         <option value="$PROJECT_DIR$/BaseTensorFlow/RNNBasedModel.py" />
       </list>
     </option>
@@ -221,7 +231,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -254,6 +263,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -273,7 +283,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.preprocess">
+  <component name="RunManager" selected="Python.TestRNNBasedModel">
     <configuration name="TestPreprocessor" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -292,7 +302,7 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
     </configuration>
-    <configuration name="TestTokenizer" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="TestRNNBasedModel" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -305,7 +315,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="TextMatching" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test/TestTokenizer.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test/TestRNNBasedModel.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -367,17 +377,17 @@
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.start" />
       <item index="1" class="java.lang.String" itemvalue="Python.TestPreprocessor" />
-      <item index="2" class="java.lang.String" itemvalue="Python.TestTokenizer" />
-      <item index="3" class="java.lang.String" itemvalue="Python.main" />
-      <item index="4" class="java.lang.String" itemvalue="Python.preprocess" />
+      <item index="2" class="java.lang.String" itemvalue="Python.main" />
+      <item index="3" class="java.lang.String" itemvalue="Python.preprocess" />
+      <item index="4" class="java.lang.String" itemvalue="Python.TestRNNBasedModel" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.preprocess" />
-        <item index="1" class="java.lang.String" itemvalue="Python.main" />
-        <item index="2" class="java.lang.String" itemvalue="Python.start" />
-        <item index="3" class="java.lang.String" itemvalue="Python.TestPreprocessor" />
-        <item index="4" class="java.lang.String" itemvalue="Python.TestTokenizer" />
+        <item index="0" class="java.lang.String" itemvalue="Python.TestRNNBasedModel" />
+        <item index="1" class="java.lang.String" itemvalue="Python.preprocess" />
+        <item index="2" class="java.lang.String" itemvalue="Python.main" />
+        <item index="3" class="java.lang.String" itemvalue="Python.start" />
+        <item index="4" class="java.lang.String" itemvalue="Python.TestPreprocessor" />
       </list>
     </recent_temporary>
   </component>
@@ -399,7 +409,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-11" y="-11" width="1942" height="1042" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1953125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -411,7 +420,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31698975" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36602053" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -504,17 +513,17 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/BaseTensorFlow/NNModel.py</url>
-          <line>101</line>
+          <line>102</line>
           <option name="timeStamp" value="122" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/BaseTensorFlow/NNModel.py</url>
-          <line>100</line>
+          <line>101</line>
           <option name="timeStamp" value="123" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/BaseTensorFlow/NNModel.py</url>
-          <line>99</line>
+          <line>100</line>
           <option name="timeStamp" value="124" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -539,7 +548,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/BaseTensorFlow/RNNBasedModel.py</url>
-          <line>59</line>
+          <line>58</line>
           <option name="timeStamp" value="129" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -597,8 +606,63 @@
           <line>146</line>
           <option name="timeStamp" value="140" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/BaseTensorFlow/RNNBasedModel.py</url>
+          <line>67</line>
+          <option name="timeStamp" value="144" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/test/TestRNNBasedModel.py</url>
+          <line>6</line>
+          <option name="timeStamp" value="148" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/test/TestRNNBasedModel.py</url>
+          <line>4</line>
+          <option name="timeStamp" value="149" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/BaseTensorFlow/RNNBasedModel.py</url>
+          <line>60</line>
+          <option name="timeStamp" value="150" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/BaseTensorFlow/RNNBasedModel.py</url>
+          <line>78</line>
+          <option name="timeStamp" value="151" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/BaseTensorFlow/RNNBasedModel.py</url>
+          <line>79</line>
+          <option name="timeStamp" value="152" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/BaseTensorFlow/RNNBasedModel.py</url>
+          <line>72</line>
+          <option name="timeStamp" value="153" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/test/TestRNNBasedModel.py</url>
+          <line>5</line>
+          <option name="timeStamp" value="154" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/BaseTensorFlow/RNNBasedModel.py</url>
+          <line>73</line>
+          <option name="timeStamp" value="155" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/BaseTensorFlow/RNNBasedModel.py</url>
+          <line>76</line>
+          <option name="timeStamp" value="156" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/BaseTensorFlow/RNNBasedModel.py</url>
+          <line>75</line>
+          <option name="timeStamp" value="157" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="143" />
+      <option name="time" value="158" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
@@ -608,55 +672,17 @@
         <watch expression="list(y_batch_pred)" language="Python" />
         <watch expression="list(y_batch_pred[0])" language="Python" />
         <watch expression="__name__" language="Python" />
+        <watch expression="query_state[0]" language="Python" />
       </configuration>
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding>
-            <element signature="e#15#55#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Preprocess/Preprocessor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="18" column="40" lean-forward="true" selection-start-line="18" selection-start-column="40" selection-end-line="18" selection-end-column="40" />
-          <folding>
-            <element signature="e#15#57#0" expanded="true" />
-            <element signature="e#6287#7640#0" expanded="false" />
-            <element signature="e#8756#9569#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.PyCharm2017.2/system/python_stubs/-2062523640/builtins.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195230">
-          <caret line="5578" column="6" lean-forward="false" selection-start-line="5578" selection-start-column="6" selection-end-line="5578" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Preprocess/WordDictionary.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="455">
-          <caret line="13" column="23" lean-forward="true" selection-start-line="13" selection-start-column="23" selection-end-line="13" selection-end-column="23" />
-          <folding>
-            <element signature="e#15#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Model/Model.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="700">
           <caret line="20" column="12" lean-forward="true" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
           <folding>
-            <element signature="e#15#79#0" expanded="true" />
+            <element signature="e#15#79#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -665,9 +691,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6685">
           <caret line="191" column="54" lean-forward="false" selection-start-line="191" selection-start-column="54" selection-end-line="191" selection-end-column="54" />
-          <folding>
-            <element signature="e#1382#3652#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -676,7 +700,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#15#55#0" expanded="true" />
+            <element signature="e#15#55#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -685,7 +709,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -707,9 +730,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1960">
           <caret line="56" column="67" lean-forward="true" selection-start-line="56" selection-start-column="67" selection-end-line="56" selection-end-column="67" />
-          <folding>
-            <element signature="e#1382#3652#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -718,7 +739,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#15#55#0" expanded="true" />
+            <element signature="e#15#55#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -727,7 +748,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -742,9 +762,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="945">
           <caret line="30" column="40" lean-forward="false" selection-start-line="30" selection-start-column="40" selection-end-line="30" selection-end-column="40" />
-          <folding>
-            <element signature="e#1382#3652#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -781,13 +799,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="35">
           <caret line="5578" column="6" lean-forward="false" selection-start-line="5578" selection-start-column="6" selection-end-line="5578" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/ProgramData/Miniconda3/envs/dl/Lib/site-packages/tensorflow/python/ops/rnn.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="637" column="0" lean-forward="false" selection-start-line="637" selection-start-column="0" selection-end-line="637" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -844,13 +855,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/ProgramData/Miniconda3/envs/dl/Lib/site-packages/tensorflow/python/layers/core.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="49">
-          <caret line="249" column="0" lean-forward="false" selection-start-line="249" selection-start-column="0" selection-end-line="249" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="125">
@@ -891,7 +895,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -928,7 +931,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2100">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -936,23 +938,22 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
+        <state relative-caret-position="245">
           <caret line="8" column="40" lean-forward="false" selection-start-line="8" selection-start-column="40" selection-end-line="8" selection-end-column="40" />
           <folding>
-            <element signature="e#15#55#0" expanded="true" />
+            <element signature="e#15#55#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Model/Config.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
+        <state relative-caret-position="210">
           <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
           <folding />
         </state>
@@ -963,27 +964,7 @@
         <state relative-caret-position="234">
           <caret line="38" column="8" lean-forward="false" selection-start-line="38" selection-start-column="8" selection-end-line="38" selection-end-column="8" />
           <folding>
-            <element signature="e#15#79#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/BaseTensorFlow/NNModel.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="371">
-          <caret line="194" column="0" lean-forward="true" selection-start-line="194" selection-start-column="0" selection-end-line="194" selection-end-column="0" />
-          <folding>
-            <element signature="e#15#44#0" expanded="true" />
-            <element signature="e#2466#2800#0" expanded="false" />
-            <element signature="e#2876#3283#0" expanded="false" />
-            <element signature="e#3383#3468#0" expanded="false" />
-            <element signature="e#3519#3904#0" expanded="false" />
-            <element signature="e#3956#4096#0" expanded="false" />
-            <element signature="e#4174#4741#0" expanded="false" />
-            <element signature="e#4786#4845#0" expanded="false" />
-            <element signature="e#4891#4922#0" expanded="false" />
-            <element signature="e#5108#8611#0" expanded="false" />
-            <element signature="e#8728#12631#0" expanded="false" />
+            <element signature="e#15#79#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -998,7 +979,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Preprocess/WordDictionary.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="35">
+        <state relative-caret-position="700">
           <caret line="22" column="8" lean-forward="false" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="8" />
           <folding>
             <element signature="e#15#25#0" expanded="true" />
@@ -1006,10 +987,70 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://D:/ProgramData/Miniconda3/envs/dl/Lib/site-packages/tensorflow/python/ops/rnn_cell_impl.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="12635">
+          <caret line="387" column="26" lean-forward="false" selection-start-line="387" selection-start-column="26" selection-end-line="387" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/ProgramData/Miniconda3/envs/dl/Lib/site-packages/tensorflow/python/ops/rnn.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15295">
+          <caret line="453" column="46" lean-forward="false" selection-start-line="453" selection-start-column="46" selection-end-line="453" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/ProgramData/Miniconda3/envs/dl/Lib/site-packages/tensorflow/python/ops/array_ops.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-595">
+          <caret line="1060" column="4" lean-forward="false" selection-start-line="1060" selection-start-column="4" selection-end-line="1060" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/ProgramData/Miniconda3/envs/dl/Lib/site-packages/tensorflow/python/framework/common_shapes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="134">
+          <caret line="690" column="0" lean-forward="false" selection-start-line="690" selection-start-column="0" selection-end-line="690" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/ProgramData/Miniconda3/envs/dl/Lib/site-packages/tensorflow/python/layers/core.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="99">
+          <caret line="192" column="41" lean-forward="false" selection-start-line="192" selection-start-column="34" selection-end-line="192" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BaseTensorFlow/NNModel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-70">
+          <caret line="20" column="13" lean-forward="false" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+          <folding>
+            <element signature="e#15#44#0" expanded="true" />
+            <element signature="e#2490#2824#0" expanded="false" />
+            <element signature="e#2900#3307#0" expanded="false" />
+            <element signature="e#3407#3492#0" expanded="false" />
+            <element signature="e#3543#3928#0" expanded="false" />
+            <element signature="e#3980#4120#0" expanded="false" />
+            <element signature="e#4198#4765#0" expanded="false" />
+            <element signature="e#4810#4869#0" expanded="false" />
+            <element signature="e#4915#4946#0" expanded="false" />
+            <element signature="e#5132#8635#0" expanded="false" />
+            <element signature="e#8752#12655#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Preprocess/Preprocessor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="453">
-          <caret line="197" column="36" lean-forward="false" selection-start-line="197" selection-start-column="36" selection-end-line="197" selection-end-column="36" />
+        <state relative-caret-position="-6017">
+          <caret line="11" column="27" lean-forward="false" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="27" />
           <folding>
             <element signature="e#15#57#0" expanded="true" />
             <element signature="e#6287#7640#0" expanded="false" />
@@ -1018,13 +1059,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/test/TestRNNBasedModel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/BaseTensorFlow/RNNBasedModel.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="268">
-          <caret line="87" column="18" lean-forward="true" selection-start-line="87" selection-start-column="18" selection-end-line="87" selection-end-column="18" />
-          <folding>
-            <element signature="e#1382#3652#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="198">
+          <caret line="76" column="0" lean-forward="false" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
