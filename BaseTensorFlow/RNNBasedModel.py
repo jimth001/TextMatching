@@ -3,6 +3,7 @@ from __future__ import print_function, division
 import tensorflow as tf
 from tensorflow.contrib import rnn
 from BaseTensorFlow.NNModel import NNModel, NNConfig
+import numpy as np
 
 
 class RNNConfig(NNConfig):
@@ -64,7 +65,7 @@ class RNNModel(NNModel):
             Used to copy-through state and zero-out outputs when past a batch
             element's sequence length.  So it's more for correctness than performance.'''
 
-        with tf.name_scope("score"):
+        with tf.name_scope("rank"):
             matrix=tf.get_variable('matrix',[self.config.hidden_dim,self.config.hidden_dim],trainable=True)
             #todo
             # 全连接层，后面接dropout以及relu激活
@@ -97,9 +98,55 @@ class RNNModel(NNModel):
             correct_pred = tf.equal(tf.argmax(self.input_y, 1), self.y_pred_class)
             self.acc = tf.reduce_mean(tf.cast(correct_pred, tf.float32))
 
-    def batch_iter(self, input_data, target, batch_size=64):
+    def batch_iter(self, input_data, target=None, batch_size=64,padding=0):
         #该模型的数据结构为[[q_list],[r_list]]
         super(RNNModel,self).batch_iter(input_data, target, batch_size=64)
-        #todo:
+        if len(input_data[0])!=len(input_data[1]):
+            raise ValueError("input_data:q and r are not in same length")
+        if input_data is None:
+            raise ValueError("input_data is None")
+        data_len = len(input_data[0])
+        num_batch = int((data_len - 1) / batch_size) + 1
+        indices = np.random.permutation(np.arange(data_len))
+        q_shuffle = [input_data[0][i] for i in indices]
+        r_shuffle = [input_data[1][i] for i in indices]
+        q_seq_len = [len(q_shuffle[i]) for i in range(len(q_shuffle))]
+        r_seq_len = [len(r_shuffle[i]) for i in range(len(r_shuffle))]
+        if target is None:
+            for i in range(num_batch):
+                start_id = i * batch_size
+                end_id = min((i + 1) * batch_size, data_len)
+                batch_q = q_shuffle[start_id:end_id]
+                batch_r = r_shuffle[start_id:end_id]
+                batch_q_seq_len = q_seq_len[start_id:end_id]
+                batch_r_seq_len = r_seq_len[start_id:end_id]
+                q_max_len = max(batch_q_seq_len)
+                r_max_len = max(batch_r_seq_len)
+                for list in batch_q:
+                    if len(list) < q_max_len:
+                        list += [padding] * (q_max_len - len(list))
+                for list in batch_r:
+                    if len(list)<r_max_len:
+                        list+=[padding]*(r_max_len-len(list))
+                yield [batch_q,batch_r,batch_q_seq_len,batch_r_seq_len]
+        else:
+            y_shuffle = [target[i] for i in indices]
+            for i in range(num_batch):
+                start_id = i * batch_size
+                end_id = min((i + 1) * batch_size, data_len)
+                batch_q = q_shuffle[start_id:end_id]
+                batch_r = r_shuffle[start_id:end_id]
+                batch_y = y_shuffle[start_id:end_id]
+                batch_q_seq_len = q_seq_len[start_id:end_id]
+                batch_r_seq_len = r_seq_len[start_id:end_id]
+                q_max_len = max(batch_q_seq_len)
+                r_max_len = max(batch_r_seq_len)
+                for list in batch_q:
+                    if len(list) < q_max_len:
+                        list += [padding] * (q_max_len - len(list))
+                for list in batch_r:
+                    if len(list)<r_max_len:
+                        list+=[padding]*(r_max_len-len(list))
+                yield [batch_q,batch_r,batch_q_seq_len,batch_r_seq_len],batch_y
 
 

@@ -47,7 +47,7 @@ class Preprocessor:
                          target_dict=None):
         # 对target编码并向量化。适用于multi-class classification。允许target是各种形式，比如“类别1，类别2”
         is_new_dict = False
-        if target_dict == None:
+        if target_dict is None:
             target_dict = WordDictionary()
             is_new_dict = True
         y_index = []
@@ -118,9 +118,9 @@ class Preprocessor:
             file.close()
 
     @staticmethod
-    def load_preprocessed_data(data_path, name,task_type="matching"):
+    def load_preprocessed_data(data_path, task_type="matching"):
         # data_path文件存储路径
-        # name文件存储名称
+        # 根据任务名称正确读取所需数据并返回
 
         # todo
 
@@ -131,7 +131,6 @@ class Preprocessor:
                                        word_dict=None,
                                        target_dict=None):
         #for both train and test
-        # 一些通用的预处理操作：
         # 载入训练集,划分验证集：
         if name=="train":
             dict_append=True
@@ -193,42 +192,20 @@ class Preprocessor:
         return new_data, new_target
 
     @staticmethod
-    def batch_iter(x, y, batch_size=64, padding=0):  # 生成批次数据。x中数据可以不等长，会padding成一样的
-        # todo 加入对y=None(即推断数据)的支持
-        # todo 适应NNModel的修改 2018-2-6
-        if y is None or x is None:
-            raise ValueError("x or y is None")
-        data_len = len(x)
-        num_batch = int((data_len - 1) / batch_size) + 1
-        indices = np.random.permutation(np.arange(data_len))
-        x_shuffle = [x[i] for i in indices]
-        y_shuffle = [y[i] for i in indices]
-        mask = [len(x_shuffle[i]) for i in range(len(x_shuffle))]
-        for i in range(num_batch):
-            start_id = i * batch_size
-            end_id = min((i + 1) * batch_size, data_len)
-            rx = x_shuffle[start_id:end_id]
-            ry = y_shuffle[start_id:end_id]
-            rm = mask[start_id:end_id]
-            max_len = max(rm)
-            for list in rx:
-                if len(list) < max_len:
-                    list += [padding] * (max_len - len(list))
-            yield rx, ry, rm
-
-    @staticmethod
     def generate_train_and_cross_validation(x, y, n_fold=4):  # 根据x，y划分n-fold交叉验证的数据集
-        if len(x) != len(y):
+        #若输入x有n个m维特征。则x.shape is [n,data_num,m]
+        #
+        if len(x[0]) != len(y[0]):
             raise ValueError("x和y长度不一致")
-        val_len = int(len(x) / n_fold)
+        val_len = int(len(x[0]) / n_fold)
         start_id = 0
-        indices = np.random.permutation(np.arange(len(x)))
-        x_shuffle = [x[i] for i in indices]
+        indices = np.random.permutation(np.arange(len(x[0])))
+        x_shuffle = [[fea[i] for i in indices] for fea in x]
         y_shuffle = [y[i] for i in indices]
         for i in range(n_fold):
-            x_train = [x_shuffle[r] for r in range(len(x)) if (r < start_id or r > start_id + val_len)]
+            x_train = [[fea[r] for r in range(len(x)) if (r < start_id or r > start_id + val_len)] for fea in x_shuffle]
             y_train = [y_shuffle[r] for r in range(len(x)) if (r < start_id or r > start_id + val_len)]
-            x_val = [x_shuffle[r] for r in range(len(x)) if (r >= start_id and r <= start_id + val_len)]
+            x_val = [[fea[r] for r in range(len(x)) if (r >= start_id and r <= start_id + val_len)] for fea in x_shuffle]
             y_val = [y_shuffle[r] for r in range(len(x)) if (r >= start_id and r <= start_id + val_len)]
             start_id = start_id + val_len + 1
             yield x_train, y_train, x_val, y_val
