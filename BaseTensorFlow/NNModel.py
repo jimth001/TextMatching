@@ -106,7 +106,7 @@ class NNModel(Model):
         time_dif = end_time - start_time
         return timedelta(seconds=int(round(time_dif)))
 
-    def _evaluate_without_predict_result(self, input_data, target):
+    def _evaluate_without_predict_result(self, input_data, target,cal_mrr=False):#todo 这个函数后续必须优化。不够general
         batches = self.batch_iter(input_data, target, self.config.batch_size,shuffle=False)
         total_loss = 0.0
         total_acc = 0.0
@@ -115,11 +115,17 @@ class NNModel(Model):
         for batch_data, batch_target in batches:
             batch_len = len(batch_target)
             feed_dict = self.feed_data(inputs_data=batch_data, keep_prob=1.0, target=batch_target)
-            loss, acc ,y_batch_pred= self.session.run([self.loss, self.acc,self.y_pred_value], feed_dict=feed_dict)
+            if cal_mrr:
+                loss, acc ,y_batch_pred= self.session.run([self.loss, self.acc,self.y_pred_value], feed_dict=feed_dict)
+                y_pred += list(y_batch_pred)
+            else:
+                loss, acc= self.session.run([self.loss, self.acc],feed_dict=feed_dict)
             total_loss += loss * batch_len
             total_acc += acc * batch_len
-            y_pred += list(y_batch_pred)
-        return total_loss / total_len, total_acc / total_len,Metrics.calculate_mrr(input_data,y_pred,target,self.target_dict)
+        if cal_mrr:
+            return total_loss / total_len, total_acc / total_len,Metrics.calculate_mrr(input_data,y_pred,target,self.target_dict)
+        else:
+            return total_loss / total_len, total_acc / total_len
 
     def _build_graph(self):  # 构建图
         print("building graph......")
@@ -241,5 +247,5 @@ class NNModel(Model):
             raise ValueError("test data has no label，cannot evaluate!")
         if load_model:#模型没有加载。因此要加载。
             self.load(init_nn=init_nn,load_dict=False)
-        print(self._evaluate_without_predict_result(x_test,y_test))
+        print(self._evaluate_without_predict_result(x_test,y_test,cal_mrr=True))
         #result=self.inference_all(x_test)
