@@ -13,7 +13,7 @@ class RNNConfig(NNConfig):
             self.mlp_hidden_layers_num = 128  # mlp的隐含层神经元个数
             self.hidden_dim = self.embedding_dim  # rnn_cell隐藏层神经元个数。
             self.rnn = 'lstm'  # rnn类型。可以选lstm和gru
-            self.layers_num = 1  # RNN层数
+            self.layers_num = 2  # RNN层数
 
 class RNNModel(NNModel):
     def __init__(self, config):  # config是配置信息
@@ -98,7 +98,7 @@ class RNNModel(NNModel):
             correct_pred = tf.equal(tf.argmax(self.input_y, 1), self.y_pred_class)
             self.acc = tf.reduce_mean(tf.cast(correct_pred, tf.float32))
 
-    def batch_iter(self, input_data, target=None, batch_size=64,padding=0):
+    def batch_iter(self, input_data, target=None, batch_size=64,padding=0,shuffle=False):
         #该模型的数据结构为[[q_list],[r_list]]
         super(RNNModel,self).batch_iter(input_data, target, batch_size=64)
         if len(input_data[0])!=len(input_data[1]):
@@ -107,7 +107,10 @@ class RNNModel(NNModel):
             raise ValueError("input_data is None")
         data_len = len(input_data[0])
         num_batch = int((data_len - 1) / batch_size) + 1
-        indices = np.random.permutation(np.arange(data_len))
+        if shuffle:
+            indices = np.random.permutation(np.arange(data_len))
+        else:
+            indices = range(data_len)
         q_shuffle = [input_data[0][i] for i in indices]
         r_shuffle = [input_data[1][i] for i in indices]
         q_seq_len = [len(q_shuffle[i]) for i in range(len(q_shuffle))]

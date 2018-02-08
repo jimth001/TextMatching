@@ -8,6 +8,7 @@ import os
 import time
 import tensorflow as tf
 import abc
+from Model.Metrics import Metrics
 
 
 class NNConfig(Config):
@@ -19,16 +20,16 @@ class NNConfig(Config):
         self.save_per_batch = 100
         self.print_per_batch = 100
         self.batch_size = 128
-        self.epoch_num = 5
+        self.epoch_num = 6
         '''
         self.save_per_batch = 10
         self.print_per_batch = 10
         self.batch_size = 16
         self.epoch_num = 1
         '''
-        self.learning_rate = 0.001
-        self.dropout_keep_prob = 0.8
-        self.require_improvement = 2 * self.print_per_batch
+        self.learning_rate = 0.0008
+        self.dropout_keep_prob = 0.9
+        self.require_improvement = 200 * self.print_per_batch
         # embedding相关参数
         self.embedding_dim = 256  # 词向量维度
         # 配置 Tensorboard，重新训练时，请将tensorboard文件夹删除，不然图会覆盖
@@ -86,13 +87,13 @@ class NNModel(Model):
         return y_pred_class
 
     @abc.abstractclassmethod
-    def batch_iter(self, input_data, target, batch_size=64):
+    def batch_iter(self, input_data, target, batch_size=64,shuffle=False):
         # 应该返回一个list对应feed_data的inputs_data,还有一个target
         return #经测试，父类写return没关系，不会导致子类调用super后函数直接结束。把它(super)当成一个普通函数来看。
 
     def inference_all(self, input_data):
         super(NNModel, self).inference_all(input_data)
-        batches = self.batch_iter(input_data, self.config.batch_size)
+        batches = self.batch_iter(input_data, self.config.batch_size,shuffle=False)
         y_pred = []
         for inputs in batches:
             y_batch_pred = self.session.run([self.y_pred_value], feed_dict=self.feed_data(inputs, 1.0))
@@ -106,17 +107,19 @@ class NNModel(Model):
         return timedelta(seconds=int(round(time_dif)))
 
     def _evaluate_without_predict_result(self, input_data, target):
-        batches = self.batch_iter(input_data, target, self.config.batch_size)
+        batches = self.batch_iter(input_data, target, self.config.batch_size,shuffle=False)
         total_loss = 0.0
         total_acc = 0.0
         total_len = len(target)
+        y_pred=[]
         for batch_data, batch_target in batches:
             batch_len = len(batch_target)
             feed_dict = self.feed_data(inputs_data=batch_data, keep_prob=1.0, target=batch_target)
-            loss, acc = self.session.run([self.loss, self.acc], feed_dict=feed_dict)
+            loss, acc ,y_batch_pred= self.session.run([self.loss, self.acc,self.y_pred_value], feed_dict=feed_dict)
             total_loss += loss * batch_len
             total_acc += acc * batch_len
-        return total_loss / total_len, total_acc / total_len
+            y_pred += list(y_batch_pred)
+        return total_loss / total_len, total_acc / total_len,Metrics.calculate_mrr(input_data,y_pred,target,self.target_dict)
 
     def _build_graph(self):  # 构建图
         print("building graph......")
@@ -154,12 +157,14 @@ class NNModel(Model):
         self.session.run(tf.global_variables_initializer())  # 初始化全局变量
         for epoch in range(self.config.epoch_num):
             print("epoch:" + str(epoch + 1))
-            batch_train = self.batch_iter(train_data, train_target, batch_size=self.config.batch_size)
+            batch_train = self.batch_iter(train_data, train_target, batch_size=self.config.batch_size,shuffle=True)
             for batch_data, batch_target in batch_train:
                 feed_dict = self.feed_data(inputs_data=batch_data, target=batch_target,
                                            keep_prob=self.config.dropout_keep_prob)
                 s = self.session.run([self.optim, merged_summary],
                                      feed_dict=feed_dict)
+                if total_batch==0:#初次存一下。因为测试代码时数据很少，可能到不了要保存的batch数就结束了。
+                    saver.save(sess=self.session, save_path=self.config.save_dir)  # 保存当前的训练结果
                 if total_batch % self.config.save_per_batch == 0:  # 每多少轮次将训练结果写入tensorboard scalar
                     writer.add_summary(s[1], total_batch)  # 传入summary信息和当前的batch数
                 if total_batch > 0 and total_batch % self.config.print_per_batch == 0:  # 每多少轮次输出在训练集和验证集上的性能
@@ -237,3 +242,4 @@ class NNModel(Model):
         if load_model:#模型没有加载。因此要加载。
             self.load(init_nn=init_nn,load_dict=False)
         print(self._evaluate_without_predict_result(x_test,y_test))
+        #result=self.inference_all(x_test)
