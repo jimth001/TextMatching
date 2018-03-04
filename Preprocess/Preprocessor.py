@@ -21,9 +21,9 @@ class Preprocessor:
                     try:
                         y_data.append(strs[1])  # 注意target是str
                     except IndexError:
-                        y_data = None
+                        #y_data = None
                         has_y = False
-            return x_data, y_data
+            return x_data, y_data#如果没有label，那y_data返回的是一个空列表
         elif task_type == "matching":  # 文本匹配任务，要求的数据格式为：query response 标签(中间使用\t分隔)
             q_data = []  # query
             r_data = []  # response
@@ -38,7 +38,7 @@ class Preprocessor:
                     try:
                         y_data.append(strs[2])  # 注意target是str
                     except IndexError:
-                        y_data = None
+                        #y_data = None
                         has_y = False
             return q_data, r_data, y_data
 
@@ -69,42 +69,32 @@ class Preprocessor:
         return y_new, target_dict
 
     @staticmethod
-    def seg_and_2_int(x_data, word_dict=None, dict_append=False):
-        # 若word_dict不为空。且dict_append为True，则会更新词典。
+    def seg_and_cal_word_frequency(x_data, word_frequency_dict=None, dict_append=False):
+        # 返回分词结果和词典
+        # 若word_frequency_dict不为None。且dict_append为True，则会更新词典。
         tokenizer = Tokenizer()
         new_x = []
-        # todo 增加统计词频
-        word_frequency_dict = {}
-        if word_dict is None:
-            dict = WordDictionary()
+        if word_frequency_dict is None:
+            word_frequency_dict = {}
             for sen in x_data:
-                sen_vec = []
                 seg_rst = tokenizer.parser(sen).split(' ')
                 for word in seg_rst:
-                    index = dict.get_index(word)
-                    if index is None:
+                    if not word in word_frequency_dict:
                         word_frequency_dict[word] = 1  # 新词，词频为1
-                        dict.add_word(word)
-                        sen_vec.append(dict.get_index(word))
                     else:
-                        sen_vec.append(index)
                         word_frequency_dict[word] += 1  # 旧词，词频+=1
-                new_x.append(sen_vec)
-            word_dict = dict
+                new_x.append(seg_rst)
         else:
             for sen in x_data:
-                sen_vec = []
-                seg_rst = tokenizer.parser(sen)
+                seg_rst = tokenizer.parser(sen).split(' ')
                 for word in seg_rst:
-                    index = word_dict.get_index(word)
-                    if index is None:  # 如果用已有词典，且dict_append=False,那么出现未登录词的时候丢弃这个词
+                    if not word in word_frequency_dict:  # 如果用已有词典，且dict_append=False,那么出现未登录词的时候丢弃这个词
                         if dict_append:
-                            word_dict.add_word(word)
-                            sen_vec.append(word_dict.get_index(word))
+                            word_frequency_dict[word] = 1  # 新词，词频为1
                     else:
-                        sen_vec.append(index)
-                new_x.append(sen_vec)
-        return new_x, word_dict
+                        word_frequency_dict[word] += 1  # 旧词，词频+=1
+                new_x.append(seg_rst)
+        return new_x, word_frequency_dict
 
     @staticmethod
     def save_preprocessed_data(data, path, name, task_type="matching"):
@@ -230,6 +220,36 @@ class Preprocessor:
             return [q_test, r_test], y_test
 
     @staticmethod
+    def filter_low_frequnecy_words(word_frequency_dict,frequency_thre=None):
+        #返回经过滤的WordDictionary
+        if frequency_thre is None:
+            total_occurence=0
+            for key in word_frequency_dict.keys():
+                total_occurence+=word_frequency_dict[key]
+            average_occurence=total_occurence/len(word_frequency_dict)
+            frequency_thre=average_occurence*0.05
+        word_dict=WordDictionary()
+        for key in word_frequency_dict.keys():
+            if word_frequency_dict[key]>frequency_thre:
+                word_dict.add_word(key)
+        return word_dict
+
+    @staticmethod
+    def sen2index_vec(sen_list,word_dict):
+        new_sen_list=[]
+        for sen in sen_list:
+            new_sen=[]
+            for word in sen:
+                index=word_dict.get_index(word)
+                if not index is None:
+                    new_sen.append(index)
+            if len(new_sen)==0:#滤成了空句子，为了不抛异常，加一个0
+                new_sen.append(0)
+            new_sen_list.append(new_sen)
+        return new_sen_list
+
+
+    @staticmethod
     def preprocess_and_save(data_path, store_path, task_type="matching", name="train", weight_balanced=False,
                             word_dict=None,
                             target_dict=None):
@@ -243,10 +263,15 @@ class Preprocessor:
             print("loading data......")
             q_train, r_train, y_train = Preprocessor.load_data(data_path, task_type)
             print("converting sentence 2 word-index vector......")
-            q_train, word_dict = Preprocessor.seg_and_2_int(x_data=q_train, word_dict=word_dict,
+            q_train, word_frequent_dict = Preprocessor.seg_and_cal_word_frequency(x_data=q_train,
                                                             dict_append=dict_append)
-            r_train, word_dict = Preprocessor.seg_and_2_int(x_data=r_train, word_dict=word_dict,
+            r_train, word_frequent_dict = Preprocessor.seg_and_cal_word_frequency(x_data=r_train,word_frequency_dict=word_frequent_dict,
                                                             dict_append=dict_append)
+            #todo 加入词频过滤：q_train,r_train=Preprocessor
+            if name == "train":#train的话，需要计算word_dict。test直接用train时生成的word_dict
+                word_dict=Preprocessor.filter_low_frequnecy_words(word_frequent_dict)
+            q_train=Preprocessor.sen2index_vec(q_train,word_dict)
+            r_train=Preprocessor.sen2index_vec(r_train,word_dict)
             q_r_train = [[q_train[x], r_train[x]] for x in range(len(q_train))]  # packed q and r
             if weight_balanced and len(y_train) > 0:
                 print("balancing data......")

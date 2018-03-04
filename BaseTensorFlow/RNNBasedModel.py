@@ -11,7 +11,7 @@ class RNNConfig(NNConfig):
         super(RNNConfig, self).__init__(name,task_type=task_type, metric=None)
         if config_path is None:
             self.mlp_hidden_layers_num = 128  # mlp的隐含层神经元个数
-            self.hidden_dim = self.embedding_dim  # rnn_cell隐藏层神经元个数。
+            self.hidden_dim = 2*self.embedding_dim  # rnn_cell隐藏层神经元个数。
             self.rnn = 'lstm'  # rnn类型。可以选lstm和gru
             self.layers_num = 2  # RNN层数
 
