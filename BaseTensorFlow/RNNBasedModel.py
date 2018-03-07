@@ -13,7 +13,8 @@ class RNNConfig(NNConfig):
             self.mlp_hidden_layers_num = 128  # mlp的隐含层神经元个数
             self.hidden_dim = 2*self.embedding_dim  # rnn_cell隐藏层神经元个数。
             self.rnn = 'lstm'  # rnn类型。可以选lstm和gru
-            self.layers_num = 2  # RNN层数
+            self.layers_num = 1  # RNN层数
+            self.interact_layer_hidden_num=128
 
 class RNNModel(NNModel):
     def __init__(self, config):  # config是配置信息
@@ -70,14 +71,18 @@ class RNNModel(NNModel):
             #todo
             # 全连接层，后面接dropout以及relu激活
             if self.config.rnn=='lstm':#return (c,h),h is output,c is the hidden state
-                # todo q*mat*r得到一个数，拼到特征向量中
-                #interaction=tf.matmul(a=tf.matmul(query_state[0][1],matrix),b=response_state[0][1],transpose_b=True)
-                fc_input = tf.concat([query_state[0][1], response_state[0][1]], axis=1)  # todo 搞清这个得好好看看原理和读源码。到底该取0还是1
+                #interact q*mat*r
+                self.W = tf.Variable(tf.random_normal(shape=(self.config.hidden_dim, self.config.interact_layer_hidden_num, self.config.hidden_dim)) * 0.05, name="IL_W")
+                qa_vec = tf.matmul(tf.tensordot(query_state[0][1], self.W, axes=[[1], [0]]), tf.expand_dims(response_state[0][1], 2))
+                interact_vec = qa_vec[:, :, -1]
             else:#GRU只有一个state
-                #interaction = tf.matmul(a=tf.matmul(query_state[0], matrix), b=response_state[0],transpose_b=True)
-                fc_input=tf.concat([query_state[0],response_state[0]])
-                # todo q*mat*r得到一个数，拼到特征向量中
-            fc = tf.layers.dense(fc_input, self.config.hidden_dim, name='fc1')
+                self.W = tf.Variable(tf.random_normal(shape=(
+                self.config.hidden_dim, self.config.interact_layer_hidden_num, self.config.hidden_dim)) * 0.05,
+                                     name="IL_W")
+                qa_vec = tf.matmul(tf.tensordot(query_state[0], self.W, axes=[[1], [0]]),
+                                   tf.expand_dims(response_state[0], 2))
+                interact_vec = qa_vec[:, :, -1]
+            fc = tf.layers.dense(interact_vec, self.config.hidden_dim, name='fc1')
             fc = tf.contrib.layers.dropout(fc, self.keep_prob)
             fc = tf.nn.relu(fc)
             # 分类器

@@ -9,7 +9,7 @@ if __name__ == "__main__":
     rnn = RNNBasedModel.RNNModel(config)
     #nlpcc-iccpol-2016.dbqa.training-data
     #mini-test.training-data
-    rnn.train_onehotkey("./training_testing/mini-test.training-data",data_preprocessed=False,release_resources=True, weight_balanced=True)
+    rnn.train_onehotkey("./training_testing/nlpcc-iccpol-2016.dbqa.training-data",data_preprocessed=False,release_resources=True, weight_balanced=True)
     print("training finished")
-    rnn.evaluate_onehotkey("./training_testing/mini-test.training-data",init_nn=False,load_model=True,data_preprocessed=False)
+    rnn.evaluate_onehotkey("./training_testing/nlpcc-iccpol-2016.dbqa.testing-data",init_nn=False,load_model=True,data_preprocessed=False)
     print("all work finished")
