@@ -12,7 +12,7 @@ class RNNConfig(NNConfig):
         if config_path is None:
             self.mlp_hidden_layers_num = 128  # mlp的隐含层神经元个数
             self.hidden_dim = 2*self.embedding_dim  # rnn_cell隐藏层神经元个数。
-            self.rnn = 'lstm'  # rnn类型。可以选lstm和gru
+            self.rnn = 'gru'  # rnn类型。可以选lstm和gru
             self.layers_num = 1  # RNN层数
             self.interact_layer_hidden_num=128
 

@@ -163,7 +163,7 @@ class NNModel(Model):
         self.session.run(tf.global_variables_initializer())  # 初始化全局变量
         for epoch in range(self.config.epoch_num):
             print("epoch:" + str(epoch + 1))
-            batch_train = self.batch_iter(train_data, train_target, batch_size=self.config.batch_size,shuffle=True)
+            batch_train = self.batch_iter(train_data, train_target, batch_size=self.config.batch_size,shuffle=False)
             for batch_data, batch_target in batch_train:
                 feed_dict = self.feed_data(inputs_data=batch_data, target=batch_target,
                                            keep_prob=self.config.dropout_keep_prob)
