@@ -227,7 +227,7 @@ class Preprocessor:
             for key in word_frequency_dict.keys():
                 total_occurence+=word_frequency_dict[key]
             average_occurence=total_occurence/len(word_frequency_dict)
-            frequency_thre=average_occurence*0.05
+            frequency_thre=average_occurence*0.00001
         word_dict=WordDictionary()
         for key in word_frequency_dict.keys():
             if word_frequency_dict[key]>frequency_thre:
@@ -327,6 +327,7 @@ class Preprocessor:
     def generate_train_and_cross_validation(x, y, n_fold=4):  # 根据x，y划分n-fold交叉验证的数据集
         # 若输入x有n个m维特征。则x.shape is [n,data_num,m]
         #
+        assert len(x[0]) == len(y),"not the same length."
         if len(x[0]) != len(y):
             raise ValueError("x和y长度不一致")
         val_len = int(len(x[0]) / n_fold)

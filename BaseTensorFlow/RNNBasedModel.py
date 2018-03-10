@@ -4,6 +4,7 @@ import tensorflow as tf
 from tensorflow.contrib import rnn
 from BaseTensorFlow.NNModel import NNModel, NNConfig
 import numpy as np
+from sklearn.utils import shuffle
 
 
 class RNNConfig(NNConfig):
@@ -14,7 +15,8 @@ class RNNConfig(NNConfig):
             self.hidden_dim = 2*self.embedding_dim  # rnn_cell隐藏层神经元个数。
             self.rnn = 'gru'  # rnn类型。可以选lstm和gru
             self.layers_num = 1  # RNN层数
-            self.interact_layer_hidden_num=128
+            self.interact_layer_hidden_num=20
+            self.reg_para=0.000001
 
 class RNNModel(NNModel):
     def __init__(self, config):  # config是配置信息
@@ -82,19 +84,24 @@ class RNNModel(NNModel):
                 qa_vec = tf.matmul(tf.tensordot(query_state[0], self.W, axes=[[1], [0]]),
                                    tf.expand_dims(response_state[0], 2))
                 interact_vec = qa_vec[:, :, -1]
-            fc = tf.layers.dense(interact_vec, self.config.hidden_dim, name='fc1')
+            fc = tf.layers.dense(interact_vec, self.config.hidden_dim, name='fc1',activation=tf.nn.tanh,
+                                 kernel_regularizer=tf.contrib.layers.l2_regularizer(self.config.reg_para),
+                                 bias_regularizer=tf.contrib.layers.l2_regularizer(self.config.reg_para))
             fc = tf.contrib.layers.dropout(fc, self.keep_prob)
-            fc = tf.nn.relu(fc)
+            #fc = tf.nn.relu(fc)
             # 分类器
-            self.logits = tf.layers.dense(fc, self.config.classes_num, name='fc2')
+            self.logits = tf.layers.dense(fc, self.config.classes_num, name='fc2',activation=tf.nn.tanh,
+                                          kernel_regularizer=tf.contrib.layers.l2_regularizer(self.config.reg_para),
+                                          bias_regularizer=tf.contrib.layers.l2_regularizer(self.config.reg_para))
             self.y_pred_value = tf.nn.softmax(self.logits)  # 输出概率值(相似度值)
             self.y_pred_class = tf.argmax(self.y_pred_value, 1)# 预测类别
+
 
         with tf.name_scope("optimize"):
             # 损失函数：交叉熵
             #tf.nn.sparse_softmax_cross_entropy_with_logits()#这个可以不用把y变成one-hot的向量
             cross_entropy = tf.nn.softmax_cross_entropy_with_logits(logits=self.logits, labels=self.input_y)
-            self.loss = tf.reduce_mean(cross_entropy)  # 对tensor所有元素求平均
+            self.loss = tf.reduce_mean(cross_entropy) # 对tensor所有元素求平均
             # 优化器。指定优化方法，学习率，最大化还是最小化，优化目标函数为交叉熵
             self.optim = tf.train.AdamOptimizer(learning_rate=self.config.learning_rate).minimize(self.loss)
 
@@ -112,11 +119,12 @@ class RNNModel(NNModel):
             raise ValueError("input_data is None")
         data_len = len(input_data[0])
         num_batch = int((data_len - 1) / batch_size) + 1
-        if shuffle:
+        if shuffle:#target must be not none
             indices = np.random.permutation(np.arange(data_len))
         else:
             indices = range(data_len)
         q_shuffle = [input_data[0][i] for i in indices]
+        # q,a,l = shuffle(q,a,l)
         r_shuffle = [input_data[1][i] for i in indices]
         q_seq_len = [len(q_shuffle[i]) for i in range(len(q_shuffle))]
         r_seq_len = [len(r_shuffle[i]) for i in range(len(r_shuffle))]

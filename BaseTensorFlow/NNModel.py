@@ -29,7 +29,7 @@ class NNConfig(Config):
         '''
         self.learning_rate = 1e-3
         self.dropout_keep_prob = 0.5
-        self.require_improvement = 200 * self.print_per_batch
+        self.require_improvement = 100 * self.print_per_batch
         # embedding相关参数
         self.embedding_dim = 256  # 词向量维度
         # 配置 Tensorboard，重新训练时，请将tensorboard文件夹删除，不然图会覆盖
